@@ -5,6 +5,24 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+# 添加djinni生成的公共C++代码
+file(GLOB helloworld_sources
+        ../../../../../djinni/support-lib/jni/*.cpp
+        ../../../../../common/generated-src/jni/*.cpp
+        ../../../../../common/handwritten-src/cpp/*.cpp
+        ../../../../../src/cpp/*.cpp
+        native-lib.cpp)
+
+# 添加头文件所在的目录
+include_directories(
+        ../../../../../djinni/support-lib/
+        ../../../../../djinni/support-lib/jni/
+        ../../../../../common/generated-src/cpp/
+        ../../../../../common/generated-src/jni/
+        ../../../../../common/handwritten-src/cpp/
+        ../../../../../src/cpp/
+)
+
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
@@ -17,7 +35,7 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             native-lib.cpp )
+             ${helloworld_sources} )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by

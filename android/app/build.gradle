@@ -17,7 +17,7 @@ android {
 
         externalNativeBuild {
             cmake {
-                cppFlags ""
+                cppFlags "-std=c++11 -frtti -fexceptions"
             }
         }
     }
@@ -26,6 +26,17 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs = [
+                        "../../common/generated-src/java",
+                        "src/main/java"
+                ]
+            }
         }
     }
 
