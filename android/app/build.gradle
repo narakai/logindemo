@@ -17,7 +17,30 @@ android {
 
         externalNativeBuild {
             cmake {
+                def djinni_src_dir = project.hasProperty('djinni_src_dir') ? project.property('djinni_src_dir') : "../../../../../tools/djinni"
+                def common_src_dir = project.hasProperty('common_src_dir') ? project.property('common_src_dir') : "../../../../../common"
+                def protos_src_dir = project.hasProperty('protos_src_dir') ? project.property('protos_src_dir') : "../../../../../protos"
+                def grpc_src_dir = project.hasProperty('grpc_src_dir') ? project.property('grpc_src_dir') : "../../../../../tools/grpc"
+
+                // The paths to the protoc and grpc_cpp_plugin binaries on the host system (so you need to build tools/grpc source code first)
+                def protoc = project.hasProperty('protoc') ? project.property('protoc') : grpc_src_dir + '/cmake/build/third_party/protobuf/protoc'
+                def grpc_cpp_plugin = project.hasProperty('grpc_cpp_plugin') ? project.property('grpc_cpp_plugin') : grpc_src_dir + '/cmake/build/grpc_cpp_plugin'
+
                 cppFlags "-std=c++11 -frtti -fexceptions"
+                arguments '-DANDROID_STL=c++_static'
+                arguments '-DRUN_HAVE_POSIX_REGEX=0'
+                arguments '-DRUN_HAVE_STD_REGEX=0'
+                arguments '-DRUN_HAVE_STEADY_CLOCK=0'
+                arguments '-Dprotobuf_BUILD_PROTOC_BINARIES=off'
+                arguments '-DgRPC_BUILD_CODEGEN=off'
+
+                arguments '-DDJINNI_SRC_DIR=' + djinni_src_dir
+                arguments '-DCOMMON_SRC_DIR=' + common_src_dir
+                arguments '-DPROTOS_SRC_DIR=' + protos_src_dir
+
+                arguments '-DGRPC_SRC_DIR=' + grpc_src_dir
+                arguments '-DPROTOBUF_PROTOC_EXECUTABLE=' + protoc
+                arguments '-DGRPC_CPP_PLUGIN_EXECUTABLE=' + grpc_cpp_plugin
             }
         }
     }

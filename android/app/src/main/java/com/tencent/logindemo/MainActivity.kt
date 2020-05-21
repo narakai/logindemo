@@ -1,7 +1,9 @@
 package com.tencent.logindemo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,16 +18,14 @@ class MainActivity : AppCompatActivity() {
         sample_text.text = helloWorld.helloWorld
     }
 
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-    external fun stringFromJNI(): String
-
     companion object {
         // Used to load the 'native-lib' library on application startup.
         init {
-            System.loadLibrary("native-lib")
+            System.loadLibrary("grpc-helloworld")
         }
+    }
+
+    fun testGRPC(view: View) {
+        startActivity(Intent(this, HelloworldActivity::class.java))
     }
 }
