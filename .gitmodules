@@ -1,3 +1,6 @@
 [submodule "grpc"]
 	path = tools/grpc
 	url = https://github.com/grpc/grpc
+[submodule "tools/djinni"]
+	path = tools/djinni
+	url = https://github.com/dropbox/djinni
