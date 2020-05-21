@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.4.1)
 
 # 添加djinni生成的公共C++代码
 file(GLOB helloworld_sources
-        ../../../../../djinni/support-lib/jni/*.cpp
+        ../../../../../tools/djinni/support-lib/jni/*.cpp
         ../../../../../common/generated-src/jni/*.cpp
         ../../../../../common/handwritten-src/cpp/*.cpp
         ../../../../../src/cpp/*.cpp
@@ -15,8 +15,8 @@ file(GLOB helloworld_sources
 
 # 添加头文件所在的目录
 include_directories(
-        ../../../../../djinni/support-lib/
-        ../../../../../djinni/support-lib/jni/
+        ../../../../../tools/djinni/support-lib/
+        ../../../../../tools/djinni/support-lib/jni/
         ../../../../../common/generated-src/cpp/
         ../../../../../common/generated-src/jni/
         ../../../../../common/handwritten-src/cpp/
