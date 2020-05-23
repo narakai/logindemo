@@ -61,7 +61,7 @@ android_protobuf_grpc_generate_cpp(
         HELLOWORLD_PROTO_SRCS HELLOWORLD_PROTO_HDRS ${PROTOS_SRC_DIR} ${PROTOS_SRC_DIR}/helloworld.proto)
 
 # proto相关代码生成proto_lib库
-add_library(proto_lib
+add_library(proto-lib
         SHARED ${HELLOWORLD_PROTO_HDRS} ${HELLOWORLD_PROTO_SRCS})
 
 target_link_libraries(proto-lib
