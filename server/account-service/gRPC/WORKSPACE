@@ -1,4 +1,6 @@
-#ref: https://github.com/arcticmatt/grpc_getting_started/blob/master/WORKSPACE
+##### See https://github.com/arcticmatt/grpc_getting_started/blob/master/WORKSPACE
+##### 由于腾讯云服务器的容器内网络访问很慢，所以特别将这里的两个下载地址都换成七牛云
+##### 操作步骤：1、用开发机下载所需文件；2、上传文件到七牛云；3、获取外链修改下载链接
 
 ##### Protobuf Rules for Bazel
 ##### See https://github.com/bazelbuild/rules_proto
@@ -9,6 +11,7 @@ http_archive(
     sha256 = "602e7161d9195e50246177e7c55b2f39950a9cf7366f74ed5f22fd45750cd208",
     strip_prefix = "rules_proto-97d8af4dc474595af3900dd85cb3a29ad28cc313",
     urls = [
+        "http://video.pocketpoetry.club/rules_proto-97d8af4dc474595af3900dd85cb3a29ad28cc313.tar.gz",
         "https://mirror.bazel.build/github.com/bazelbuild/rules_proto/archive/97d8af4dc474595af3900dd85cb3a29ad28cc313.tar.gz",
         "https://github.com/bazelbuild/rules_proto/archive/97d8af4dc474595af3900dd85cb3a29ad28cc313.tar.gz",
     ],
@@ -18,11 +21,12 @@ rules_proto_dependencies()
 rules_proto_toolchains()
 
 ##### gRPC Rules for Bazel, version 1.29.1
-##### ref: https://github.com/grpc/grpc/commit/7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419
+##### See https://github.com/grpc/grpc/commit/7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419
 ##### See https://github.com/grpc/grpc/blob/master/src/cpp/README.md#make
 http_archive(
     name = "com_github_grpc_grpc",
     urls = [
+        "http://video.pocketpoetry.club/grpc-7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419.tar.gz",
         "https://github.com/grpc/grpc/archive/7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419.tar.gz",
     ],
     strip_prefix = "grpc-7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419",
