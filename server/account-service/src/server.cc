@@ -24,7 +24,11 @@
 #include <thread>
 #include <grpcpp/grpcpp.h>
 
+#ifdef BAZEL_BUILD
 #include "src/helloworld.grpc.pb.h"
+#else
+#include "helloworld.grpc.pb.h"
+#endif
 
 using grpc::Server;
 using grpc::ServerBuilder;
@@ -34,16 +38,10 @@ using helloworld::Greeter;
 using helloworld::HelloReply;
 using helloworld::HelloRequest;
 
-// The gRPC server is defined globally so that SIGTERM handler can shut it
-// down when Kubernetes stops the process.
-std::unique_ptr<Server> server;
-
 // Logic and data behind the server's behavior.
 class GreeterServiceImpl final : public Greeter::Service {
-  Status SayHello(ServerContext* context, const HelloRequest* request,
-                  HelloReply* reply) override {
-    std::cout << "Received request: " << request->ShortDebugString()
-              << std::endl;
+  Status SayHello(ServerContext* context, const HelloRequest* request, HelloReply* reply) override {
+    std::cout << "Received request: " << request->ShortDebugString() << std::endl;
     std::string prefix("Hello ");
     reply->set_message(prefix + request->name());
     return Status::OK;
@@ -55,20 +53,14 @@ void RunServer() {
   GreeterServiceImpl service;
 
   ServerBuilder builder;
-  // Listen on the given address without any authentication mechanism. Cloud
-  // Robotics Core ensures that clients are authenticated.
+  // Listen on the given address without any authentication mechanism.
   builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
   // Register "service" as the instance through which we'll communicate with
   // clients. In this case it corresponds to a *synchronous* service.
   builder.RegisterService(&service);
   // Finally assemble the server.
-  server = builder.BuildAndStart();
+  std::unique_ptr<Server> server(builder.BuildAndStart());
   std::cout << "Server listening on " << server_address << std::endl;
-
-  std::signal(SIGTERM, [](int) {
-    // When SIGTERM is received, shutdown the gRPC server.
-    server->Shutdown();
-  });
 
   // Wait for the server to shutdown.
   server->Wait();
