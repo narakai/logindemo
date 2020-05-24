@@ -2,6 +2,9 @@
 ##### 由于腾讯云服务器的容器内网络访问很慢，所以特别将这里的两个下载地址都换成七牛云
 ##### 操作步骤：1、用开发机下载所需文件；2、上传文件到七牛云；3、获取外链修改下载链接
 
+##### 完成上面的步骤之后发现还是不够，grpc的git archive下载之后并没有包含所有的third_party工具的源码
+##### 尝试制作特殊的grpc archive文件，里面包含所有的third_party工具源码，大小大约是516MB，之前是7M
+
 ##### Protobuf Rules for Bazel
 ##### See https://github.com/bazelbuild/rules_proto
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -26,6 +29,7 @@ rules_proto_toolchains()
 http_archive(
     name = "com_github_grpc_grpc",
     urls = [
+        "http://video.pocketpoetry.club/logindemo-grpc-7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419.tar.gz",
         "http://video.pocketpoetry.club/grpc-7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419.tar.gz",
         "https://github.com/grpc/grpc/archive/7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419.tar.gz",
     ],
