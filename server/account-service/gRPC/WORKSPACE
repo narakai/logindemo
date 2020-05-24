@@ -1,9 +1,11 @@
 ##### See https://github.com/arcticmatt/grpc_getting_started/blob/master/WORKSPACE
-##### 由于腾讯云服务器的容器内网络访问很慢，所以特别将这里的两个下载地址都换成七牛云
+
+##### (1)由于腾讯云服务器的容器内网络访问很慢，所以特别将这里的两个下载地址都换成七牛云
 ##### 操作步骤：1、用开发机下载所需文件；2、上传文件到七牛云；3、获取外链修改下载链接
 
-##### 完成上面的步骤之后发现还是不够，grpc的git archive下载之后并没有包含所有的third_party工具的源码
+##### (2)完成上面的步骤之后发现还是不够，grpc的git archive下载之后并没有包含所有的third_party工具的源码
 ##### 尝试制作特殊的grpc archive文件，里面包含所有的third_party工具源码，大小大约是516MB，之前是7M
+
 
 ##### Protobuf Rules for Bazel
 ##### See https://github.com/bazelbuild/rules_proto
@@ -15,8 +17,6 @@ http_archive(
     strip_prefix = "rules_proto-97d8af4dc474595af3900dd85cb3a29ad28cc313",
     urls = [
         "http://video.pocketpoetry.club/rules_proto-97d8af4dc474595af3900dd85cb3a29ad28cc313.tar.gz",
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_proto/archive/97d8af4dc474595af3900dd85cb3a29ad28cc313.tar.gz",
-        "https://github.com/bazelbuild/rules_proto/archive/97d8af4dc474595af3900dd85cb3a29ad28cc313.tar.gz",
     ],
 )
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
@@ -25,16 +25,19 @@ rules_proto_toolchains()
 
 ##### gRPC Rules for Bazel, version 1.29.1
 ##### See https://github.com/grpc/grpc/commit/7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419
-##### See https://github.com/grpc/grpc/blob/master/src/cpp/README.md#make
+##### 这里http_archive中的url一般要求是https的，如果是http的话需要额外提供文件的sha256值才行
 http_archive(
     name = "com_github_grpc_grpc",
+    sha256 = "786813b5a50dfcdc1813499df5224e736f21d5439615d8e8ce327a8fb2ba1b08",
     urls = [
-        "http://video.pocketpoetry.club/logindemo-grpc-7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419.tar.gz",
         "http://video.pocketpoetry.club/grpc-7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419.tar.gz",
-        "https://github.com/grpc/grpc/archive/7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419.tar.gz",
     ],
     strip_prefix = "grpc-7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419",
 )
+#local_repository(
+#    name = "com_github_grpc_grpc",
+#    path = "grpc-7d89dbb311f049b43bda7bbf6f7d7bf1b4c24419",
+#)
 load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
 grpc_deps()
 
