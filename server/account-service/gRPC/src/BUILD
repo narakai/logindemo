@@ -14,7 +14,7 @@ cc_proto_library(
     deps = [":helloworld_proto"],
 )
 
-#一定要有grpc_only = True
+##### 一定要有grpc_only = True
 cc_grpc_library(
     name = "helloworld_cc_grpc",
     srcs = [":helloworld_proto"],
@@ -39,7 +39,7 @@ cc_library(
     srcs = ["mysqlpool.cc"],
     hdrs = ["mysqlpool.h"],
     deps = [":mysqlDriver"],
-    copts = ["-Isrc/include"],
+    copts = ["-Isrc/include"]
 )
 
 cc_binary(
@@ -49,5 +49,6 @@ cc_binary(
     deps = [
         "@com_github_grpc_grpc//:grpc++",
         ":helloworld_cc_grpc",
+        ":mysqlpool",
     ]
 )

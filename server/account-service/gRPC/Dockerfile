@@ -12,5 +12,4 @@ RUN chmod +x bazel-3.1.0-installer-linux-x86_64.sh && \
 ### 编译目标server
 RUN /root/bin/bazel build src:greeter-server
 
-### 启动目标server
-CMD ["./greeter-server"]
+CMD bazel-bin/src/greeter-server

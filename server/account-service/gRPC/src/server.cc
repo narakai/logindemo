@@ -24,11 +24,15 @@
 #include <thread>
 #include <grpcpp/grpcpp.h>
 
-#ifdef BAZEL_BUILD
 #include "src/helloworld.grpc.pb.h"
-#else
-#include "helloworld.grpc.pb.h"
-#endif
+#include "src/mysqlpool.h"
+
+#define  MYSQL_ADDRESS "mysql"
+#define  MYSQL_USRNAME "javayhu"
+#define  MYSQL_USRPASSWORD "javayhu"
+#define  MYSQL_USEDB "logindemo"
+#define  MYSQL_PORT 3306
+#define  MYSQL_MAX_CONNECTCOUNT 30
 
 using grpc::Server;
 using grpc::ServerBuilder;
@@ -38,12 +42,21 @@ using helloworld::Greeter;
 using helloworld::HelloReply;
 using helloworld::HelloRequest;
 
+MysqlPool* mysql;
+
 // Logic and data behind the server's behavior.
 class GreeterServiceImpl final : public Greeter::Service {
   Status SayHello(ServerContext* context, const HelloRequest* request, HelloReply* reply) override {
     std::cout << "Received request: " << request->ShortDebugString() << std::endl;
     std::string prefix("Hello ");
     reply->set_message(prefix + request->name());
+
+    MYSQL* connection = mysql->getOneConnect();
+
+    std::string insertAccountSql("INSERT INTO account(name, password) VALUES('" + request->ShortDebugString() + "', '666')");
+    mysql_query(connection, insertAccountSql.c_str());
+    mysql->close(connection);
+
     return Status::OK;
   }
 };
@@ -67,7 +80,12 @@ void RunServer() {
 }
 
 int main(int argc, char** argv) {
+  mysql = MysqlPool::getMysqlPoolObject();
+  mysql->setParameter(MYSQL_ADDRESS,MYSQL_USRNAME,MYSQL_USRPASSWORD,MYSQL_USEDB,MYSQL_PORT,NULL,0,MYSQL_MAX_CONNECTCOUNT);
+
   RunServer();
+
+  delete mysql;
 
   return 0;
 }
