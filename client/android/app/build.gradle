@@ -35,7 +35,6 @@ android {
 
                 arguments '-DDJINNI_SRC_DIR=' + djinni_src_dir
                 arguments '-DPROTOS_SRC_DIR=' + protos_src_dir
-
                 arguments '-DGRPC_SRC_DIR=' + grpc_src_dir
                 arguments '-DPROTOBUF_PROTOC_EXECUTABLE=' + protoc
                 arguments '-DGRPC_CPP_PLUGIN_EXECUTABLE=' + grpc_cpp_plugin
@@ -47,17 +46,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    sourceSets {
-        main {
-            java {
-                srcDirs = [
-                        "../../common/generated-src/java",
-                        "src/main/java"
-                ]
-            }
         }
     }
 

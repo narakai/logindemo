@@ -21,7 +21,7 @@
 #include <grpc++/grpc++.h>
 #include <jni.h>
 
-#include "helloworld.grpc.pb.h"
+#include "protos/helloworld.grpc.pb.h"
 
 using grpc::Channel;
 using grpc::ClientContext;
@@ -104,7 +104,7 @@ private:
 
 // Send an RPC and return the response. Invoked from Java code.
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_tencent_logindemo_HelloworldActivity_sayHello(
+Java_com_tencent_logindemo_activity_HelloworldActivity_sayHello(
         JNIEnv* env, jobject obj_unused, jstring host_raw, jint port_raw,
         jstring message_raw) {
     const char* host_chars = env->GetStringUTFChars(host_raw, (jboolean*)0);
@@ -128,7 +128,7 @@ Java_com_tencent_logindemo_HelloworldActivity_sayHello(
 
 // Start the server. Invoked from Java code.
 extern "C" JNIEXPORT void JNICALL
-Java_com_tencent_logindemo_HelloworldActivity_startServer(
+Java_com_tencent_logindemo_activity_HelloworldActivity_startServer(
         JNIEnv* env, jobject obj_this, jint port_raw) {
 int port = static_cast<int>(port_raw);
 
