@@ -90,3 +90,7 @@ lint/tmp/
 .idea/
 
 .DS_Store
+/server/account-service/gRPC/bazel-testlogs
+/server/account-service/gRPC/bazel-out
+/server/account-service/gRPC/bazel-gRPC
+/server/account-service/gRPC/bazel-bin
