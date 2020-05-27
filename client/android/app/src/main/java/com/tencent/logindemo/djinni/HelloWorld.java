@@ -8,11 +8,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class HelloWorld {
     public abstract String getHelloWorld();
 
-    public abstract String sayHello(String host, int port, String msg);
+    public abstract String sayHello(String msg);
 
-    public static HelloWorld create()
+    public static HelloWorld create(String host, int port)
     {
-        return CppProxy.create();
+        return CppProxy.create(host,
+                               port);
     }
 
     private static final class CppProxy extends HelloWorld
@@ -47,13 +48,13 @@ public abstract class HelloWorld {
         private native String native_getHelloWorld(long _nativeRef);
 
         @Override
-        public String sayHello(String host, int port, String msg)
+        public String sayHello(String msg)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_sayHello(this.nativeRef, host, port, msg);
+            return native_sayHello(this.nativeRef, msg);
         }
-        private native String native_sayHello(long _nativeRef, String host, int port, String msg);
+        private native String native_sayHello(long _nativeRef, String msg);
 
-        public static native HelloWorld create();
+        public static native HelloWorld create(String host, int port);
     }
 }

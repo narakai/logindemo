@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        service = HelloWorld.create()
+        service = HelloWorld.create(HOST, PORT)
         device = android.provider.Settings.System.getString(contentResolver, android.provider.Settings.Secure.ANDROID_ID)
         showDevice(device)
         refreshUser()
@@ -148,7 +148,7 @@ class MainActivity : AppCompatActivity() {
      * 测试服务器端是否能正常通信
      */
     fun helloworld(view: View) {
-        val message = service.sayHello(HOST, PORT, "World from Server")
+        val message = service.sayHello("World from Server")
         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 

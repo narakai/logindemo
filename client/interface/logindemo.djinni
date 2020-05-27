@@ -1,6 +1,6 @@
 
 hello_world = interface +c {
-	static create():hello_world;
+	static create(host:string,port:i32):hello_world;
 	get_hello_world(): string;
-	sayHello(host:string,port:i32,msg:string): string;
+	sayHello(msg:string): string;
 }

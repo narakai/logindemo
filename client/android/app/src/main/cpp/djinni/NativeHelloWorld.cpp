@@ -19,11 +19,12 @@ CJNIEXPORT void JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppPro
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
 }
 
-CJNIEXPORT jobject JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_create(JNIEnv* jniEnv, jobject /*this*/)
+CJNIEXPORT jobject JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_create(JNIEnv* jniEnv, jobject /*this*/, jstring j_host, jint j_port)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE0(jniEnv);
-        auto r = ::logindemo::HelloWorld::create();
+        auto r = ::logindemo::HelloWorld::create(::djinni::String::toCpp(jniEnv, j_host),
+                                                 ::djinni::I32::toCpp(jniEnv, j_port));
         return ::djinni::release(::djinni_generated::NativeHelloWorld::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
@@ -38,14 +39,12 @@ CJNIEXPORT jstring JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024Cpp
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT jstring JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_native_1sayHello(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_host, jint j_port, jstring j_msg)
+CJNIEXPORT jstring JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_native_1sayHello(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_msg)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
         const auto& ref = ::djinni::objectFromHandleAddress<::logindemo::HelloWorld>(nativeRef);
-        auto r = ref->sayHello(::djinni::String::toCpp(jniEnv, j_host),
-                               ::djinni::I32::toCpp(jniEnv, j_port),
-                               ::djinni::String::toCpp(jniEnv, j_msg));
+        auto r = ref->sayHello(::djinni::String::toCpp(jniEnv, j_msg));
         return ::djinni::release(::djinni::String::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }

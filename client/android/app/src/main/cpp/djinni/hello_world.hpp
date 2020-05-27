@@ -13,11 +13,11 @@ class HelloWorld {
 public:
     virtual ~HelloWorld() {}
 
-    static std::shared_ptr<HelloWorld> create();
+    static std::shared_ptr<HelloWorld> create(const std::string & host, int32_t port);
 
     virtual std::string get_hello_world() = 0;
 
-    virtual std::string sayHello(const std::string & host, int32_t port, const std::string & msg) = 0;
+    virtual std::string sayHello(const std::string & msg) = 0;
 };
 
 }  // namespace logindemo
