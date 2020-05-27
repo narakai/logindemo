@@ -23,6 +23,9 @@ namespace helloworld {
 
 static const char* Greeter_method_names[] = {
   "/helloworld.Greeter/SayHello",
+  "/helloworld.Greeter/Signup",
+  "/helloworld.Greeter/Login",
+  "/helloworld.Greeter/Logout",
 };
 
 std::unique_ptr< Greeter::Stub> Greeter::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -33,6 +36,9 @@ std::unique_ptr< Greeter::Stub> Greeter::NewStub(const std::shared_ptr< ::grpc::
 
 Greeter::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_SayHello_(Greeter_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Signup_(Greeter_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Login_(Greeter_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Logout_(Greeter_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Greeter::Stub::SayHello(::grpc::ClientContext* context, const ::helloworld::HelloRequest& request, ::helloworld::HelloReply* response) {
@@ -63,6 +69,90 @@ void Greeter::Stub::experimental_async::SayHello(::grpc::ClientContext* context,
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::HelloReply>::Create(channel_.get(), cq, rpcmethod_SayHello_, context, request, false);
 }
 
+::grpc::Status Greeter::Stub::Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::helloworld::LoginResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Signup_, context, request, response);
+}
+
+void Greeter::Stub::experimental_async::Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Signup_, context, request, response, std::move(f));
+}
+
+void Greeter::Stub::experimental_async::Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Signup_, context, request, response, std::move(f));
+}
+
+void Greeter::Stub::experimental_async::Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Signup_, context, request, response, reactor);
+}
+
+void Greeter::Stub::experimental_async::Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Signup_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* Greeter::Stub::AsyncSignupRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::LoginResponse>::Create(channel_.get(), cq, rpcmethod_Signup_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* Greeter::Stub::PrepareAsyncSignupRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::LoginResponse>::Create(channel_.get(), cq, rpcmethod_Signup_, context, request, false);
+}
+
+::grpc::Status Greeter::Stub::Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::helloworld::LoginResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Login_, context, request, response);
+}
+
+void Greeter::Stub::experimental_async::Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Login_, context, request, response, std::move(f));
+}
+
+void Greeter::Stub::experimental_async::Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Login_, context, request, response, std::move(f));
+}
+
+void Greeter::Stub::experimental_async::Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Login_, context, request, response, reactor);
+}
+
+void Greeter::Stub::experimental_async::Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Login_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* Greeter::Stub::AsyncLoginRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::LoginResponse>::Create(channel_.get(), cq, rpcmethod_Login_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* Greeter::Stub::PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::LoginResponse>::Create(channel_.get(), cq, rpcmethod_Login_, context, request, false);
+}
+
+::grpc::Status Greeter::Stub::Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::helloworld::LoginResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Logout_, context, request, response);
+}
+
+void Greeter::Stub::experimental_async::Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Logout_, context, request, response, std::move(f));
+}
+
+void Greeter::Stub::experimental_async::Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Logout_, context, request, response, std::move(f));
+}
+
+void Greeter::Stub::experimental_async::Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Logout_, context, request, response, reactor);
+}
+
+void Greeter::Stub::experimental_async::Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Logout_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* Greeter::Stub::AsyncLogoutRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::LoginResponse>::Create(channel_.get(), cq, rpcmethod_Logout_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* Greeter::Stub::PrepareAsyncLogoutRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::LoginResponse>::Create(channel_.get(), cq, rpcmethod_Logout_, context, request, false);
+}
+
 Greeter::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Greeter_method_names[0],
@@ -74,12 +164,63 @@ Greeter::Service::Service() {
              ::helloworld::HelloReply* resp) {
                return service->SayHello(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Greeter_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Greeter::Service, ::helloworld::LoginRequest, ::helloworld::LoginResponse>(
+          [](Greeter::Service* service,
+             ::grpc_impl::ServerContext* ctx,
+             const ::helloworld::LoginRequest* req,
+             ::helloworld::LoginResponse* resp) {
+               return service->Signup(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Greeter_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Greeter::Service, ::helloworld::LoginRequest, ::helloworld::LoginResponse>(
+          [](Greeter::Service* service,
+             ::grpc_impl::ServerContext* ctx,
+             const ::helloworld::LoginRequest* req,
+             ::helloworld::LoginResponse* resp) {
+               return service->Login(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Greeter_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Greeter::Service, ::helloworld::TokenInfo, ::helloworld::LoginResponse>(
+          [](Greeter::Service* service,
+             ::grpc_impl::ServerContext* ctx,
+             const ::helloworld::TokenInfo* req,
+             ::helloworld::LoginResponse* resp) {
+               return service->Logout(ctx, req, resp);
+             }, this)));
 }
 
 Greeter::Service::~Service() {
 }
 
 ::grpc::Status Greeter::Service::SayHello(::grpc::ServerContext* context, const ::helloworld::HelloRequest* request, ::helloworld::HelloReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Greeter::Service::Signup(::grpc::ServerContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Greeter::Service::Login(::grpc::ServerContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Greeter::Service::Logout(::grpc::ServerContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -17,6 +17,7 @@ file(GLOB all_sources
         ${DJINNI_SRC_DIR}/support-lib/jni/*.cpp
         protos/*.cc
         djinni/*.cpp
+        djinni/*.hpp
         hello_world_impl.cpp)
 
 include_directories(

@@ -3,6 +3,7 @@
 
 #include "NativeHelloWorld.hpp"  // my header
 #include "Marshal.hpp"
+#include "NativeCommonReponse.hpp"
 
 namespace djinni_generated {
 
@@ -29,13 +30,37 @@ CJNIEXPORT jobject JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024Cpp
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT jstring JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_native_1getHelloWorld(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef)
+CJNIEXPORT jobject JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_native_1signup(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_name, jstring j_password, jstring j_device)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
         const auto& ref = ::djinni::objectFromHandleAddress<::logindemo::HelloWorld>(nativeRef);
-        auto r = ref->get_hello_world();
-        return ::djinni::release(::djinni::String::fromCpp(jniEnv, r));
+        auto r = ref->signup(::djinni::String::toCpp(jniEnv, j_name),
+                             ::djinni::String::toCpp(jniEnv, j_password),
+                             ::djinni::String::toCpp(jniEnv, j_device));
+        return ::djinni::release(::djinni_generated::NativeCommonReponse::fromCpp(jniEnv, r));
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
+CJNIEXPORT jobject JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_native_1login(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_name, jstring j_password, jstring j_device)
+{
+    try {
+        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
+        const auto& ref = ::djinni::objectFromHandleAddress<::logindemo::HelloWorld>(nativeRef);
+        auto r = ref->login(::djinni::String::toCpp(jniEnv, j_name),
+                            ::djinni::String::toCpp(jniEnv, j_password),
+                            ::djinni::String::toCpp(jniEnv, j_device));
+        return ::djinni::release(::djinni_generated::NativeCommonReponse::fromCpp(jniEnv, r));
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
+CJNIEXPORT jobject JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_native_1logout(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_token)
+{
+    try {
+        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
+        const auto& ref = ::djinni::objectFromHandleAddress<::logindemo::HelloWorld>(nativeRef);
+        auto r = ref->logout(::djinni::String::toCpp(jniEnv, j_token));
+        return ::djinni::release(::djinni_generated::NativeCommonReponse::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 

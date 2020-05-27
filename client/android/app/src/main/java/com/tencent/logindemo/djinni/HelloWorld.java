@@ -6,7 +6,11 @@ package com.tencent.logindemo.djinni;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class HelloWorld {
-    public abstract String getHelloWorld();
+    public abstract CommonReponse signup(String name, String password, String device);
+
+    public abstract CommonReponse login(String name, String password, String device);
+
+    public abstract CommonReponse logout(String token);
 
     public abstract String sayHello(String msg);
 
@@ -40,12 +44,28 @@ public abstract class HelloWorld {
         }
 
         @Override
-        public String getHelloWorld()
+        public CommonReponse signup(String name, String password, String device)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_getHelloWorld(this.nativeRef);
+            return native_signup(this.nativeRef, name, password, device);
         }
-        private native String native_getHelloWorld(long _nativeRef);
+        private native CommonReponse native_signup(long _nativeRef, String name, String password, String device);
+
+        @Override
+        public CommonReponse login(String name, String password, String device)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_login(this.nativeRef, name, password, device);
+        }
+        private native CommonReponse native_login(long _nativeRef, String name, String password, String device);
+
+        @Override
+        public CommonReponse logout(String token)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_logout(this.nativeRef, token);
+        }
+        private native CommonReponse native_logout(long _nativeRef, String token);
 
         @Override
         public String sayHello(String msg)
