@@ -38,4 +38,16 @@ CJNIEXPORT jstring JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024Cpp
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
+CJNIEXPORT jstring JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_native_1sayHello(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_host, jint j_port, jstring j_msg)
+{
+    try {
+        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
+        const auto& ref = ::djinni::objectFromHandleAddress<::logindemo::HelloWorld>(nativeRef);
+        auto r = ref->sayHello(::djinni::String::toCpp(jniEnv, j_host),
+                               ::djinni::I32::toCpp(jniEnv, j_port),
+                               ::djinni::String::toCpp(jniEnv, j_msg));
+        return ::djinni::release(::djinni::String::fromCpp(jniEnv, r));
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
 }  // namespace djinni_generated

@@ -26,10 +26,10 @@ include_directories(
         protos/
         hello_world_impl.hpp)
 
-add_library(grpc-helloworld
+add_library(native-lib
         SHARED ${all_sources})
 
-target_link_libraries(grpc-helloworld
+target_link_libraries(native-lib
         grpc++
         libprotobuf
         android

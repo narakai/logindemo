@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
 #include <string>
 
@@ -15,6 +16,8 @@ public:
     static std::shared_ptr<HelloWorld> create();
 
     virtual std::string get_hello_world() = 0;
+
+    virtual std::string sayHello(const std::string & host, int32_t port, const std::string & msg) = 0;
 };
 
 }  // namespace logindemo

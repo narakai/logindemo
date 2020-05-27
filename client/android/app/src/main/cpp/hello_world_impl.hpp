@@ -12,6 +12,8 @@ namespace logindemo {
 
         std::string get_hello_world();
 
+        std::string sayHello(const std::string & host, int32_t port, const std::string & msg);
+
     };
 
 }

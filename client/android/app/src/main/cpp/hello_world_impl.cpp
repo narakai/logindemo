@@ -20,18 +20,15 @@ class GreeterClient {
 public:
     GreeterClient(std::shared_ptr <Channel> channel) : stub_(Greeter::NewStub(channel)) {}
 
-    // Assembles the client's payload, sends it and presents the response back
-    // from the server.
-    std::string SayHello(const std::string &user) {
-        // Data we are sending to the server.
+    // Assembles the client's payload, sends it and presents the response back from the server.
+    std::string SayHello(const std::string &message) {
         HelloRequest request;
-        request.set_name(user);
+        request.set_name(message);
 
         // Container for the data we expect from the server.
         HelloReply reply;
 
-        // Context for the client. It could be used to convey extra information to
-        // the server and/or tweak certain RPC behaviors.
+        // Context for the client. It could be used to convey extra information to the server and/or tweak certain RPC behaviors.
         ClientContext context;
         // The actual RPC.
         Status status = stub_->SayHello(&context, request, &reply);
@@ -47,31 +44,6 @@ private:
     std::unique_ptr <Greeter::Stub> stub_;
 };
 
-extern "C" JNIEXPORT jstring
-JNICALL
-Java_com_tencent_logindemo_activity_MainActivity_sayHello(
-        JNIEnv *env, jobject obj_unused, jstring host_raw, jint port_raw,
-        jstring message_raw) {
-    const char *host_chars = env->GetStringUTFChars(host_raw, (jboolean *) 0);
-    std::string host(host_chars, env->GetStringUTFLength(host_raw));
-
-    int port = static_cast<int>(port_raw);
-
-    const char *message_chars = env->GetStringUTFChars(message_raw, (jboolean *) 0);
-    std::string message(message_chars, env->GetStringUTFLength(message_raw));
-
-    const int host_port_buf_size = 1024;
-    char host_port[host_port_buf_size];
-    snprintf(host_port, host_port_buf_size, "%s:%d", host.c_str(), port);
-
-    GreeterClient greeter(
-            grpc::CreateChannel(host_port, grpc::InsecureChannelCredentials()));
-    std::string reply = greeter.SayHello(message);
-
-    return env->NewStringUTF(reply.c_str());
-    //return env->NewStringUTF(message.c_str());
-}
-
 namespace logindemo {
 
     std::shared_ptr <HelloWorld> HelloWorld::create() {
@@ -82,6 +54,9 @@ namespace logindemo {
 
     }
 
+    /**
+     * 这个方法是演示从native层返回字符串给上层，验证djinni接入调通
+     */
     std::string HelloWorldImpl::get_hello_world() {
         std::string myString = "Hello World! ";
         time_t t = time(0);
@@ -92,6 +67,19 @@ namespace logindemo {
             myString += tmdescr;
         }
         return myString;
+    }
+
+    /**
+     * 这个方法是演示从客户端发送msg给服务器端，服务器端返回hello msg给客户端，验证grpc接入调通
+     */
+    std::string HelloWorldImpl::sayHello(const std::string &host, int32_t port, const std::string &message) {
+        const int host_port_buf_size = 1024;
+        char host_port[host_port_buf_size];
+        snprintf(host_port, host_port_buf_size, "%s:%d", host.c_str(), port);
+
+        GreeterClient greeter(grpc::CreateChannel(host_port, grpc::InsecureChannelCredentials()));
+        std::string reply = greeter.SayHello(message);
+        return reply;
     }
 
 }

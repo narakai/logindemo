@@ -9,32 +9,24 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        // Example of a call to a native method
-        //sample_text.text = stringFromJNI()
-        val helloWorld = HelloWorld.create()
-        sample_text.text = helloWorld.helloWorld
-    }
-
     companion object {
+
+        val TAG = "MainActivity"
+
         // Used to load the 'native-lib' library on application startup.
         init {
-            System.loadLibrary("grpc-helloworld")
+            System.loadLibrary("native-lib")
         }
     }
 
-    external fun sayHello(
-        host: String?,
-        port: Int,
-        message: String?
-    ): String?
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
 
     fun testGRPC(view: View) {
-        //startActivity(Intent(this, HelloworldActivity::class.java))
-        val message = sayHello("111.229.210.33", 50051, "logindemo")
+        val helloWorld = HelloWorld.create()
+        val message = helloWorld.sayHello("111.229.210.33", 50051, "logindemo")
         sample_text.text = message
     }
 }
