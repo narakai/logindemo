@@ -4,16 +4,19 @@ import com.tencent.logindemo.database.DataBaseHelper;
 import com.tencent.logindemo.proto.*;
 import io.grpc.stub.StreamObserver;
 
+import java.util.logging.Logger;
+
 /**
  * See https://grpc.io/docs/tutorials/basic/java/
  * See https://www.baeldung.com/grpc-introduction
  */
 public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
 
-    public static final String TAG = "HelloWorldService";
+    private static final Logger logger = Logger.getLogger(HelloWorldService.class.getName());
 
     @Override
     public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver) {
+        logger.info("sayHello, request: " + request.getName());
         HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + request.getName()).build();
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
