@@ -1,9 +1,8 @@
 package com.tencent.logindemo.activity
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.tencent.logindemo.R
 import com.tencent.logindemo.djinni.HelloWorld
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,7 +26,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    external fun sayHello(
+        host: String?,
+        port: Int,
+        message: String?
+    ): String?
+
     fun testGRPC(view: View) {
-        startActivity(Intent(this, HelloworldActivity::class.java))
+        //startActivity(Intent(this, HelloworldActivity::class.java))
+        val message = sayHello("111.229.210.33", 50051, "logindemo")
+        sample_text.text = message
     }
 }
