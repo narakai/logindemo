@@ -2,7 +2,6 @@ package com.tencent.logindemo.activity
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -50,7 +49,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         service = HelloWorld.create(HOST, PORT)
-        device = android.provider.Settings.System.getString(contentResolver, android.provider.Settings.Secure.ANDROID_ID)
+        device = android.provider.Settings.System.getString(
+            contentResolver,
+            android.provider.Settings.Secure.ANDROID_ID
+        )
         showDevice(device)
         refreshUser()
         refreshToken()
@@ -153,17 +155,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun showUserName(userName:String?) {
+    private fun showUserName(userName: String?) {
         userText.text = "user:${userName}"
     }
 
     @SuppressLint("SetTextI18n")
-    private fun showDevice(device:String?) {
+    private fun showDevice(device: String?) {
         deviceText.text = "device:${device}"
     }
 
     @SuppressLint("SetTextI18n")
-    private fun showToken(token:String?) {
+    private fun showToken(token: String?) {
         tokenText.text = "token:${token}"
     }
 }

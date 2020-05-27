@@ -14,10 +14,14 @@ repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
 def grpcVersion = '1.29.0'
 def protobufVersion = '3.12.0'
 def protocVersion = protobufVersion
 
+// 控制从哪里读取proto文件，然后将proto和grpc文件生成到哪里
 protobuf {
     generatedFilesBaseDir = "$projectDir/src/"
     protoc {
@@ -50,11 +54,10 @@ sourceSets {
 dependencies {
     implementation "io.grpc:grpc-all:${grpcVersion}"
     implementation "com.google.protobuf:protobuf-java-util:${protobufVersion}"
+    implementation "mysql:mysql-connector-java:8.0.19"
 }
 
 // 设置入口，执行./gradlew run就能启动server
 application {
     mainClassName = "com.tencent.logindemo.HelloWorldServer"
 }
-
-

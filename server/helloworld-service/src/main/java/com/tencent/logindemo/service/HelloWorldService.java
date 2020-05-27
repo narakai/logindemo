@@ -1,5 +1,6 @@
 package com.tencent.logindemo.service;
 
+import com.tencent.logindemo.database.DataBaseHelper;
 import com.tencent.logindemo.proto.*;
 import io.grpc.stub.StreamObserver;
 
@@ -16,12 +17,22 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
         HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + request.getName()).build();
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
-        //super.sayHello(request, responseObserver);
     }
 
     @Override
     public void signup(LoginRequest request, StreamObserver<LoginResponse> responseObserver) {
-        super.signup(request, responseObserver);
+        String name = request.getName();
+        String password = request.getPassword();
+        String device = request.getDevice();
+
+        boolean isUserExist = DataBaseHelper.getInstance().isUserExist(name);
+        if (!isUserExist) {
+            DataBaseHelper.getInstance().addNewUser(name, password, device);
+        } else {
+            LoginResponse response = LoginResponse.newBuilder().setCode(0).setMessage("OK").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
     }
 
     @Override
