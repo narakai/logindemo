@@ -75,7 +75,7 @@ public class DataBaseHelper {
 
     public boolean addNewToken(String name, String device, String token) {
         try {
-            String sql = "INSERT INTO token(name, device, token) VALUES ('" + name + "', '" + device + "', '" + token + "')";
+            String sql = "INSERT INTO token(userName, device, token) VALUES ('" + name + "', '" + device + "', '" + token + "')";
             logger.info("addNewToken executeSql: " + sql);
             return statement.executeUpdate(sql) >= 1;
         } catch (SQLException ex) {
