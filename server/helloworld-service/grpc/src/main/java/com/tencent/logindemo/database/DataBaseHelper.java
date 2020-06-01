@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 
 /**
  * 数据库操作类
+ * <p>
+ * TODO: 1、数据库中有两个表user和token表，暂时没有考虑建立索引来提高查询效率
  */
 public class DataBaseHelper {
 
@@ -68,14 +70,29 @@ public class DataBaseHelper {
     /**
      * 判断指定名称用户的token是否存在
      */
-    public boolean isTokenExist(String name) {
+    public boolean isTokenExistByUserName(String name) {
         try {
             String sql = "SELECT * FROM token WHERE userName='" + name + "'";
-            logger.info("isTokenExist executeSql: " + sql);
+            logger.info("isTokenExistByUserName executeSql: " + sql);
             ResultSet rs = statement.executeQuery(sql);
             return rs.next();
         } catch (SQLException ex) {
-            logger.log(Level.SEVERE, "isTokenExist fail", ex);
+            logger.log(Level.SEVERE, "isTokenExistByUserName fail", ex);
+        }
+        return false;
+    }
+
+    /**
+     * 判断指定的token是否存在
+     */
+    public boolean isTokenExistByToken(String token) {
+        try {
+            String sql = "SELECT * FROM token WHERE token='" + token + "'";
+            logger.info("isTokenExistByToken executeSql: " + sql);
+            ResultSet rs = statement.executeQuery(sql);
+            return rs.next();
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, "isTokenExistByToken fail", ex);
         }
         return false;
     }
@@ -139,6 +156,20 @@ public class DataBaseHelper {
             return statement.executeUpdate(sql) >= 1;
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "updateToken fail", ex);
+        }
+        return false;
+    }
+
+    /**
+     * 使token失效
+     */
+    public boolean invalidToken(String token) {
+        try {
+            String sql = "UPDATE token SET status=0 WHERE token='" + token + "'";
+            logger.info("invalidToken executeSql: " + sql);
+            return statement.executeUpdate(sql) >= 1;
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, "invalidToken fail", ex);
         }
         return false;
     }

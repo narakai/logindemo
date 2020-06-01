@@ -7,10 +7,10 @@ public class Utils {
 
     /**
      * 生成token
-     * TODO：这里简单处理用token#加上当前时间戳
+     * TODO：这里简单处理用token#name#加上当前时间戳
      */
-    public static final String generateToken() {
-        return "token#" + System.nanoTime();
+    public static final String generateToken(String name) {
+        return "token#" + name + "#" + System.nanoTime();
     }
 
     /**
@@ -20,7 +20,6 @@ public class Utils {
     public static final String generateSalt() {
         return String.valueOf(System.nanoTime());
     }
-
 
 
 }
