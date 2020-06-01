@@ -2,11 +2,7 @@ package com.tencent.logindemo.database;
 
 import com.tencent.logindemo.HelloWorldServer;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,20 +49,11 @@ public class DataBaseHelper {
         }
     }
 
-    public ResultSet executeSql(String sql) {
-        try {
-            logger.info("executeSql: " + sql);
-            return statement.executeQuery(sql);
-        } catch (SQLException ex) {
-            logger.log(Level.SEVERE, "executeSql fail", ex);
-        }
-        return null;
-    }
-
     public boolean isUserExist(String name) {
         try {
-            String sql = "SELECT * FROM user WHERE name=" + name;
-            ResultSet rs = executeSql(sql);
+            String sql = "SELECT * FROM user WHERE name='" + name + "'";
+            logger.info("isUserExist executeSql: " + sql);
+            ResultSet rs = statement.executeQuery(sql);
             return rs.next();
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "isUserExist fail", ex);
@@ -77,8 +64,8 @@ public class DataBaseHelper {
     public boolean addNewUser(String name, String password, String device) {
         try {
             String sql = "INSERT INTO user(name, password, salt) VALUES ('" + name + "', '" + password + "', '" + device + "')";
-            ResultSet rs = executeSql(sql);
-            return rs.next();
+            logger.info("addNewUser executeSql: " + sql);
+            return statement.executeUpdate(sql) >= 1;
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "addNewUser fail", ex);
         }
