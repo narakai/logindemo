@@ -286,11 +286,11 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun showDevice(device: String?) {
-        deviceText.text = "device:${device}"
+        deviceText.text = "device: ${device}"
     }
 
     @SuppressLint("SetTextI18n")
     private fun showToken(token: String?) {
-        tokenText.text = "token:${token}"
+        tokenText.text = "token: ${token}"
     }
 }

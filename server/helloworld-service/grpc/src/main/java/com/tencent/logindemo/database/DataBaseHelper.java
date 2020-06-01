@@ -55,7 +55,7 @@ public class DataBaseHelper {
      */
     public boolean isUserExist(String name) {
         try {
-            String sql = "SELECT (name, salt) FROM user WHERE name='" + name + "'";
+            String sql = "SELECT * FROM user WHERE name='" + name + "'";
             logger.info("isUserExist executeSql: " + sql);
             ResultSet rs = statement.executeQuery(sql);
             return rs.next();
@@ -70,7 +70,7 @@ public class DataBaseHelper {
      */
     public boolean isTokenExist(String name) {
         try {
-            String sql = "SELECT (userName, token) FROM token WHERE userName='" + name + "'";
+            String sql = "SELECT * FROM token WHERE userName='" + name + "'";
             logger.info("isTokenExist executeSql: " + sql);
             ResultSet rs = statement.executeQuery(sql);
             return rs.next();
