@@ -174,6 +174,28 @@ public class DataBaseHelper {
         return false;
     }
 
+    /**
+     * 判断token是否有效
+     */
+    public boolean isTokenValid(String token) {
+        try {
+            String sql = "SELECT * FROM token WHERE token='" + token + "'";
+            logger.info("isTokenValid executeSql: " + sql);
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs.next()) {
+                int status = rs.getInt("status");
+                if (status == 0) {
+                    return false;
+                }
+
+                //TODO: 判断device信息
+            }
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, "isTokenValid fail", ex);
+        }
+        return false;
+    }
+
     public void test() {
         try {
             String sql;

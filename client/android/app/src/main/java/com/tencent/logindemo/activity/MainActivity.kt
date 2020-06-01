@@ -81,24 +81,28 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "refreshToken, response:${response}")
                 if (response.code == 0) {
                     token = response.data
-                    saveToke(token)
+                    if (token.isNullOrEmpty()) {
+                        clearToken(token)
+                    } else {
+                        saveToke(token)
+                    }
                     showToken(token)
                     Log.i(
                         TAG,
                         "refreshToken success(${response.code}, ${response.msg}), token:${token}"
                     )
                     Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT)
-                        .show() //"同步token成功"
+                        .show()
                 } else {
                     Log.e(TAG, "refreshToken fail(${response.code}, ${response.msg})")
                     token = null
                     clearToken(token)
                     showToken(token)
-                    /*Toast.makeText(
+                    Toast.makeText(
                         applicationContext,
-                        "同步token失败(${response.code}, ${response.msg})",
+                        "token已失效，请重新登录",
                         Toast.LENGTH_SHORT
-                    ).show()*/
+                    ).show()
                 }
             }
         }

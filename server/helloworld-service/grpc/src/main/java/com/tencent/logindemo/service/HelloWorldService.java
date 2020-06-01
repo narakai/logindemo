@@ -27,6 +27,8 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
     public static final int ERROR_LOGIN_USER_NOT_EXIST = -2;
     public static final int ERROR_LOGIN_NAME_PASSWORD_WRONG = -3;
     public static final int ERROR_LOGOUT_TOKEN_NOT_EXIST = -4;
+    public static final int ERROR_REFRESH_TOKEN_NOT_EXIST = -5;
+    public static final int ERROR_REFRESH_TOKEN_NOT_VALID = -6;
 
     /**
      * 测试和客户端的通信
@@ -70,7 +72,7 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } else {
-            LoginResponse response = LoginResponse.newBuilder().setCode(ERROR_SIGNUP_USER_EXIST).setMessage("该用户已存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+            LoginResponse response = LoginResponse.newBuilder().setCode(ERROR_SIGNUP_USER_EXIST).setMessage("注册：该用户已存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
@@ -100,13 +102,13 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
 
         boolean isUserExist = DataBaseHelper.getInstance().isUserExist(name);
         if (!isUserExist) {
-            LoginResponse response = LoginResponse.newBuilder().setCode(ERROR_LOGIN_USER_NOT_EXIST).setMessage("该用户不存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+            LoginResponse response = LoginResponse.newBuilder().setCode(ERROR_LOGIN_USER_NOT_EXIST).setMessage("登录：该用户不存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } else {
             boolean isPasswordCorrect = DataBaseHelper.getInstance().isPasswordCorrect(name, password);
             if (!isPasswordCorrect) {
-                LoginResponse response = LoginResponse.newBuilder().setCode(ERROR_LOGIN_NAME_PASSWORD_WRONG).setMessage("账号或密码错误").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+                LoginResponse response = LoginResponse.newBuilder().setCode(ERROR_LOGIN_NAME_PASSWORD_WRONG).setMessage("登录：账号或密码错误").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
                 responseObserver.onNext(response);
                 responseObserver.onCompleted();
             } else {
@@ -134,6 +136,11 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
 
     /**
      * 登出
+     * 1、先查询token表中是否存在这个token，如果不存在，返回-4，提示token不存在
+     * 2、如果存在，那么将token记录的status设置为0，表示当前没有设备登录
+     * <p>
+     * 自测：
+     * 1、登录账号之后登出该账号
      */
     @Override
     public void logout(TokenInfo request, StreamObserver<LoginResponse> responseObserver) {
@@ -144,7 +151,7 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
 
         boolean isTokenExist = DataBaseHelper.getInstance().isTokenExistByToken(token);
         if (!isTokenExist) {
-            LoginResponse response = LoginResponse.newBuilder().setCode(ERROR_LOGOUT_TOKEN_NOT_EXIST).setMessage("token不存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+            LoginResponse response = LoginResponse.newBuilder().setCode(ERROR_LOGOUT_TOKEN_NOT_EXIST).setMessage("登出：token不存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } else {
@@ -160,9 +167,38 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
 
     /**
      * 刷新token
+     * 1、先查询token表中是否存在这个token，如果不存在，返回-5，提示token不存在
+     * 2、如果存在，那么检查token的status状态，如果不满足status=1并且device一致，返回-6，提示用户重新登录
+     * <p>
+     * 自测：
+     * 1、账号登录之后修改数据库中某个token记录的device或者status的值，观察应用重启是否需要这个账号重新登录
      */
     @Override
     public void refreshToken(TokenInfo request, StreamObserver<LoginResponse> responseObserver) {
-        super.refreshToken(request, responseObserver);
+        String token = request.getToken();
+        logger.info("refreshToken, token: " + token);
+
+        DataBaseHelper.getInstance().open();
+
+        boolean isTokenExist = DataBaseHelper.getInstance().isTokenExistByToken(token);
+        if (!isTokenExist) {
+            LoginResponse response = LoginResponse.newBuilder().setCode(ERROR_REFRESH_TOKEN_NOT_EXIST).setMessage("刷新token：token不存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        } else {
+            //TODO: 这里暂时没有传入device信息
+            boolean isTokenValid = DataBaseHelper.getInstance().isTokenValid(token);
+            if (!isTokenValid) {
+                LoginResponse response = LoginResponse.newBuilder().setCode(ERROR_REFRESH_TOKEN_NOT_VALID).setMessage("token失效，请重新登录").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+                responseObserver.onNext(response);
+                responseObserver.onCompleted();
+            } else {
+                LoginResponse response = LoginResponse.newBuilder().setCode(0).setMessage("刷新token成功").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+                responseObserver.onNext(response);
+                responseObserver.onCompleted();
+            }
+        }
+
+        DataBaseHelper.getInstance().close();
     }
 }
