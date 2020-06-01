@@ -19,9 +19,9 @@ base_dir=$(cd "`dirname "0"`" && pwd)
 java_dir=$(echo $java_package | tr . /)
 
 # output directories for generated src
-cpp_out="$base_dir/../android/app/src/main/cpp/djinni"
-jni_out="$base_dir/../android/app/src/main/cpp/djinni"
-java_out="$base_dir/../android/app/src/main/java/$java_dir"
+cpp_out="$base_dir/../client/android/app/src/main/cpp/djinni"
+jni_out="$base_dir/../client/android/app/src/main/cpp/djinni"
+java_out="$base_dir/../client/android/app/src/main/java/$java_dir"
 
 # clean generated src dirs
 rm -rf $cpp_out
@@ -29,7 +29,7 @@ rm -rf $jni_out
 rm -rf $java_out 
 
 # execute the djinni command
-../../tools/djinni/src/run \
+../tools/djinni/src/run \
    --java-out $java_out \
    --java-package $java_package \
    --ident-java-field mFooBar \
