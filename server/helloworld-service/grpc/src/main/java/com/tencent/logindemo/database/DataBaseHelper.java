@@ -85,11 +85,11 @@ public class DataBaseHelper {
      */
     public boolean isPasswordCorrect(String name, String password) {
         try {
-            String sql = "SELECT (name, salt) FROM user WHERE name='" + name + "'";
+            String sql = "SELECT * FROM user WHERE name='" + name + "'";
             logger.info("isPasswordCorrect executeSql: " + sql);
             ResultSet rs = statement.executeQuery(sql);
             if (rs.next()) {
-                String salt = rs.getString(2);//TODO: 利用salt对password进行加密并进行对比
+                String salt = rs.getString("salt");//TODO: 利用salt对password进行加密并进行对比
                 String sql2 = "SELECT name FROM user WHERE name='" + name + "' and password='" + password + "'";
                 logger.info("isPasswordCorrect executeSql: " + sql);
                 ResultSet rs2 = statement.executeQuery(sql2);
