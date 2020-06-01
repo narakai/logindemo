@@ -9,17 +9,22 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.tencent.logindemo.R
+import com.tencent.logindemo.djinni.CommonReponse
 import com.tencent.logindemo.djinni.HelloWorld
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
 
         val TAG = "MainActivity"
-        val HOST = "111.229.210.33"
-        val PORT = 50051
+        val HOST = "111.229.210.33" //腾讯云服务器IP地址
+        val PORT = 50051 //grpc server监听端口
 
         init {
             System.loadLibrary("native-lib")
@@ -54,13 +59,7 @@ class MainActivity : AppCompatActivity() {
             android.provider.Settings.Secure.ANDROID_ID
         )
         showDevice(device)
-        refreshUser()
         refreshToken()
-    }
-
-    private fun refreshUser() {
-        val userName = getPreferences(Context.MODE_PRIVATE).getString("userName", null)
-        showUserName(userName)
     }
 
     private fun refreshToken() {
@@ -70,16 +69,6 @@ class MainActivity : AppCompatActivity() {
         if (token != null) {
             //service.refreshToken(token)
         }
-    }
-
-    private fun saveToke(token: String?) {
-        Log.i(TAG, "saveToken, token:${token}")
-        getPreferences(Context.MODE_PRIVATE).edit().putString("token", token).apply()
-    }
-
-    private fun saveUserName(userName: String?) {
-        Log.i(TAG, "saveUserName, userName:${userName}")
-        getPreferences(Context.MODE_PRIVATE).edit().putString("userName", userName).apply()
     }
 
     /**
@@ -96,8 +85,17 @@ class MainActivity : AppCompatActivity() {
             val name = nameText.text.toString()
             val password = passwordText.text.toString()
             if (validNamePassword(name, password)) {
-                //service.signup(name, password, device)
-                Log.i(TAG, "signup, name:${name}, password:${password}")
+                Log.i(TAG, "signup, name:${name}, password:${password}, device:${device}")
+
+                lifecycleScope.launch {
+                    val response = signupInBackground(name, password, device)
+                    Log.i(TAG, "signup, response:${response}")
+                    if (response.code == 0) {
+                        token = response.data
+                        saveToke(token)
+                        showToken(token)
+                    }
+                }
             } else {
                 Toast.makeText(applicationContext, "请输入合法的账号密码", Toast.LENGTH_SHORT).show()
             }
@@ -105,11 +103,14 @@ class MainActivity : AppCompatActivity() {
         builder.show()
     }
 
-    private fun validNamePassword(name: String?, password: String?): Boolean {
-        if (name.isNullOrEmpty() || password.isNullOrEmpty()) {
-            return false
+    suspend fun signupInBackground(
+        name: String?,
+        password: String?,
+        device: String?
+    ): CommonReponse {
+        return withContext(Dispatchers.Default) {
+            service.signup(name, password, device)
         }
-        return true
     }
 
     /**
@@ -147,10 +148,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
+     * 检查用户输入的账号和密码
+     * TODO：实际情况下这里要做得很具体，限制字符串长度和字符组合，例如密码需要同时有大小写字母和数字等
+     */
+    private fun validNamePassword(name: String?, password: String?): Boolean {
+        if (name.isNullOrEmpty() || password.isNullOrEmpty()) {
+            return false
+        }
+        return true
+    }
+
+    /**
+     * 保存数据
+     * TODO：暂时只是保存到SharedPreference中，实际需要特别地以加密形式保存到本地
+     */
+    private fun saveToke(token: String?) {
+        Log.i(TAG, "saveToken, token:${token}")
+        getPreferences(Context.MODE_PRIVATE).edit().putString("token", token).apply()
+    }
+
+    /**
      * 测试服务器端是否能正常通信
      */
     fun helloworld(view: View) {
-        val message = service.sayHello("World from Server")
+        val message = service.sayHello("javayhu")
         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
