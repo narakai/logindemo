@@ -42,7 +42,7 @@ protobuf {
 sourceSets {
     main {
         proto {
-            srcDir "../../protos"
+            srcDir "../../../protos"
         }
         java {
             srcDirs 'src/main/grpc'

@@ -67,6 +67,9 @@ class MainActivity : AppCompatActivity() {
         refreshToken()
     }
 
+    /**
+     * 刷新token
+     */
     private fun refreshToken() {
         if (token == null) {
             Log.i(TAG, "refreshToken, token is null")

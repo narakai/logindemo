@@ -3,6 +3,7 @@ package com.tencent.logindemo.database;
 import com.tencent.logindemo.HelloWorldServer;
 
 import java.sql.*;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -61,13 +62,24 @@ public class DataBaseHelper {
         return false;
     }
 
-    public boolean addNewUser(String name, String password, String device) {
+    public boolean addNewUser(String name, String password, String salt) {
         try {
-            String sql = "INSERT INTO user(name, password, salt) VALUES ('" + name + "', '" + password + "', '" + device + "')";
+            String sql = "INSERT INTO user(name, password, salt) VALUES ('" + name + "', '" + password + "', '" + salt + "')";
             logger.info("addNewUser executeSql: " + sql);
             return statement.executeUpdate(sql) >= 1;
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "addNewUser fail", ex);
+        }
+        return false;
+    }
+
+    public boolean addNewToken(String name, String device, String token) {
+        try {
+            String sql = "INSERT INTO token(name, device, token) VALUES ('" + name + "', '" + device + "', '" + token + "')";
+            logger.info("addNewToken executeSql: " + sql);
+            return statement.executeUpdate(sql) >= 1;
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, "addNewToken fail", ex);
         }
         return false;
     }

@@ -17,6 +17,8 @@ service Greeter {
 
   rpc Logout (TokenInfo) returns (LoginResponse) {}
 
+  rpc RefreshToken (TokenInfo) returns (LoginResponse) {}
+
 }
 
 message LoginRequest {

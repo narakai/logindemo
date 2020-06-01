@@ -54,15 +54,17 @@ public final class HelloWorldProto {
       "\001 \001(\005\022\017\n\007message\030\002 \001(\t\022(\n\ttokenInfo\030\003 \001(" +
       "\0132\025.helloworld.TokenInfo\"\032\n\tTokenInfo\022\r\n" +
       "\005token\030\001 \001(\t\"\034\n\014HelloRequest\022\014\n\004name\030\001 \001" +
-      "(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001(\t2\210\002\n\007Gr" +
+      "(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001(\t2\314\002\n\007Gr" +
       "eeter\022>\n\010SayHello\022\030.helloworld.HelloRequ" +
       "est\032\026.helloworld.HelloReply\"\000\022?\n\006Signup\022" +
       "\030.helloworld.LoginRequest\032\031.helloworld.L" +
       "oginResponse\"\000\022>\n\005Login\022\030.helloworld.Log" +
       "inRequest\032\031.helloworld.LoginResponse\"\000\022<" +
       "\n\006Logout\022\025.helloworld.TokenInfo\032\031.hellow" +
-      "orld.LoginResponse\"\000B0\n\033com.tencent.logi" +
-      "ndemo.protoB\017HelloWorldProtoP\001b\006proto3"
+      "orld.LoginResponse\"\000\022B\n\014RefreshToken\022\025.h" +
+      "elloworld.TokenInfo\032\031.helloworld.LoginRe" +
+      "sponse\"\000B0\n\033com.tencent.logindemo.protoB" +
+      "\017HelloWorldProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
