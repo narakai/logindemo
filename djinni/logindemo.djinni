@@ -14,6 +14,8 @@ hello_world = interface +c {
 	login(name:string, password:string, device:string): common_reponse;
 
 	logout(token:string): common_reponse;
+
+	refreshToken(token:string): common_reponse;
 	
 	sayHello(msg:string): string;
 

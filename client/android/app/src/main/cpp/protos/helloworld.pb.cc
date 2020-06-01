@@ -171,15 +171,17 @@ const char descriptor_table_protodef_helloworld_2eproto[] PROTOBUF_SECTION_VARIA
   "\001 \001(\005\022\017\n\007message\030\002 \001(\t\022(\n\ttokenInfo\030\003 \001("
   "\0132\025.helloworld.TokenInfo\"\032\n\tTokenInfo\022\r\n"
   "\005token\030\001 \001(\t\"\034\n\014HelloRequest\022\014\n\004name\030\001 \001"
-  "(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001(\t2\210\002\n\007Gr"
+  "(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001(\t2\314\002\n\007Gr"
   "eeter\022>\n\010SayHello\022\030.helloworld.HelloRequ"
   "est\032\026.helloworld.HelloReply\"\000\022\?\n\006Signup\022"
   "\030.helloworld.LoginRequest\032\031.helloworld.L"
   "oginResponse\"\000\022>\n\005Login\022\030.helloworld.Log"
   "inRequest\032\031.helloworld.LoginResponse\"\000\022<"
   "\n\006Logout\022\025.helloworld.TokenInfo\032\031.hellow"
-  "orld.LoginResponse\"\000B0\n\033com.tencent.logi"
-  "ndemo.protoB\017HelloWorldProtoP\001b\006proto3"
+  "orld.LoginResponse\"\000\022B\n\014RefreshToken\022\025.h"
+  "elloworld.TokenInfo\032\031.helloworld.LoginRe"
+  "sponse\"\000B0\n\033com.tencent.logindemo.protoB"
+  "\017HelloWorldProtoP\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_helloworld_2eproto_deps[1] = {
 };
@@ -193,7 +195,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_hel
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_helloworld_2eproto_once;
 static bool descriptor_table_helloworld_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_helloworld_2eproto = {
-  &descriptor_table_helloworld_2eproto_initialized, descriptor_table_protodef_helloworld_2eproto, "helloworld.proto", 598,
+  &descriptor_table_helloworld_2eproto_initialized, descriptor_table_protodef_helloworld_2eproto, "helloworld.proto", 666,
   &descriptor_table_helloworld_2eproto_once, descriptor_table_helloworld_2eproto_sccs, descriptor_table_helloworld_2eproto_deps, 5, 0,
   schemas, file_default_instances, TableStruct_helloworld_2eproto::offsets,
   file_level_metadata_helloworld_2eproto, 5, file_level_enum_descriptors_helloworld_2eproto, file_level_service_descriptors_helloworld_2eproto,

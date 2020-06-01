@@ -81,6 +81,21 @@ namespace logindemo {
         }
     }
 
+    CommonReponse HelloWorldImpl::refreshToken(const std::string &token) {
+        TokenInfo request;
+        request.set_token(token);
+
+        LoginResponse response;
+        ClientContext context;
+        Status status = stub_->RefreshToken(&context, request, &response);
+
+        if (status.ok()) {
+            return CommonReponse(response.code(), response.message(), response.tokeninfo().token());
+        } else {
+            return CommonReponse(status.error_code(), status.error_message(), status.error_details());
+        }
+    }
+
     /**
      * 这个方法是演示从客户端发送msg给服务器端，服务器端返回hello msg给客户端，验证grpc接入调通
      */

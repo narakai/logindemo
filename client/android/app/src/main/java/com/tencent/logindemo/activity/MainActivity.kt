@@ -54,20 +54,43 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         service = HelloWorld.create(HOST, PORT)
+
         device = android.provider.Settings.System.getString(
             contentResolver,
             android.provider.Settings.Secure.ANDROID_ID
         )
         showDevice(device)
+
+        token = getPreferences(Context.MODE_PRIVATE).getString("token", null)
+        showToken(token)
+
         refreshToken()
     }
 
     private fun refreshToken() {
-        token = getPreferences(Context.MODE_PRIVATE).getString("token", null)
-        showToken(token)
+        if (token == null) {
+            Log.i(TAG, "refreshToken, token is null")
+        } else {
+            Log.i(TAG, "refreshToken, token:${token}")
 
-        if (token != null) {
-            //service.refreshToken(token)
+            lifecycleScope.launch {
+                val response = refreshTokenInBackground(token)
+                Log.i(TAG, "refreshToken, response:${response}")
+                if (response.code == 0) {
+                    Log.i(TAG, "refresh token success, token:${token}")
+                    token = response.data
+                    saveToke(token)
+                    showToken(token)
+                } else {
+                    Log.e(TAG, "refresh token fail(${response.code}, ${response.msg})")
+                }
+            }
+        }
+    }
+
+    suspend fun refreshTokenInBackground(token: String?): CommonReponse {
+        return withContext(Dispatchers.Default) {
+            service.refreshToken(token)
         }
     }
 
@@ -91,9 +114,18 @@ class MainActivity : AppCompatActivity() {
                     val response = signupInBackground(name, password, device)
                     Log.i(TAG, "signup, response:${response}")
                     if (response.code == 0) {
+                        Log.e(TAG, "signup success(${response.code}, ${response.msg})")
+                        Toast.makeText(applicationContext, "注册成功", Toast.LENGTH_SHORT).show()
                         token = response.data
                         saveToke(token)
                         showToken(token)
+                    } else {
+                        Log.e(TAG, "signup fail(${response.code}, ${response.msg})")
+                        Toast.makeText(
+                            applicationContext,
+                            "注册失败(${response.code}, ${response.msg})",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             } else {
@@ -127,13 +159,41 @@ class MainActivity : AppCompatActivity() {
             val name = nameText.text.toString()
             val password = passwordText.text.toString()
             if (validNamePassword(name, password)) {
-                //service.login(name, password, device)
-                Log.i(TAG, "login, name:${name}, password:${password}")
+                Log.i(TAG, "login, name:${name}, password:${password}, device:${device}")
+
+                lifecycleScope.launch {
+                    val response = loginInBackground(name, password, device)
+                    Log.i(TAG, "login, response:${response}")
+                    if (response.code == 0) {
+                        Log.e(TAG, "login success(${response.code}, ${response.msg})")
+                        Toast.makeText(applicationContext, "登录成功", Toast.LENGTH_SHORT).show()
+                        token = response.data
+                        saveToke(token)
+                        showToken(token)
+                    } else {
+                        Log.e(TAG, "login fail(${response.code}, ${response.msg})")
+                        Toast.makeText(
+                            applicationContext,
+                            "登录失败(${response.code}, ${response.msg})",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
             } else {
                 Toast.makeText(applicationContext, "请输入合法的账号密码", Toast.LENGTH_SHORT).show()
             }
         }
         builder.show()
+    }
+
+    suspend fun loginInBackground(
+        name: String?,
+        password: String?,
+        device: String?
+    ): CommonReponse {
+        return withContext(Dispatchers.Default) {
+            service.login(name, password, device)
+        }
     }
 
     /**
@@ -143,7 +203,32 @@ class MainActivity : AppCompatActivity() {
         if (null == token) {
             Toast.makeText(applicationContext, "还未登录", Toast.LENGTH_SHORT).show()
         } else {
-            //service.logout(token)
+            Log.i(TAG, "logout, token:${token}")
+
+            lifecycleScope.launch {
+                val response = logoutInBackground(token)
+                Log.i(TAG, "logout, response:${response}")
+                if (response.code == 0) {
+                    Log.e(TAG, "logout success(${response.code}, ${response.msg})")
+                    Toast.makeText(applicationContext, "登出成功", Toast.LENGTH_SHORT).show()
+                    token = null
+                    clearToken(token)
+                    showToken(token)
+                } else {
+                    Log.e(TAG, "logout fail(${response.code}, ${response.msg})")
+                    Toast.makeText(
+                        applicationContext,
+                        "登出失败(${response.code}, ${response.msg})",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
+    suspend fun logoutInBackground(token: String?): CommonReponse {
+        return withContext(Dispatchers.Default) {
+            service.logout(token)
         }
     }
 
@@ -167,17 +252,17 @@ class MainActivity : AppCompatActivity() {
         getPreferences(Context.MODE_PRIVATE).edit().putString("token", token).apply()
     }
 
+    private fun clearToken(token: String?) {
+        Log.i(TAG, "clearToken, token:${token}")
+        getPreferences(Context.MODE_PRIVATE).edit().remove("token").apply()
+    }
+
     /**
      * 测试服务器端是否能正常通信
      */
     fun helloworld(view: View) {
         val message = service.sayHello("javayhu")
         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun showUserName(userName: String?) {
-        userText.text = "user:${userName}"
     }
 
     @SuppressLint("SetTextI18n")

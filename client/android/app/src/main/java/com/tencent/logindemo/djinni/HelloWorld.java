@@ -12,6 +12,8 @@ public abstract class HelloWorld {
 
     public abstract CommonReponse logout(String token);
 
+    public abstract CommonReponse refreshToken(String token);
+
     public abstract String sayHello(String msg);
 
     public static HelloWorld create(String host, int port)
@@ -66,6 +68,14 @@ public abstract class HelloWorld {
             return native_logout(this.nativeRef, token);
         }
         private native CommonReponse native_logout(long _nativeRef, String token);
+
+        @Override
+        public CommonReponse refreshToken(String token)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_refreshToken(this.nativeRef, token);
+        }
+        private native CommonReponse native_refreshToken(long _nativeRef, String token);
 
         @Override
         public String sayHello(String msg)
