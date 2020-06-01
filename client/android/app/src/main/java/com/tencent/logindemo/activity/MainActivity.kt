@@ -76,16 +76,29 @@ class MainActivity : AppCompatActivity() {
         } else {
             Log.i(TAG, "refreshToken, token:${token}")
 
-            lifecycleScope.launch {
+            lifecycleScope.launch(Dispatchers.Main) {
                 val response = refreshTokenInBackground(token)
                 Log.i(TAG, "refreshToken, response:${response}")
                 if (response.code == 0) {
-                    Log.i(TAG, "refresh token success, token:${token}")
                     token = response.data
                     saveToke(token)
                     showToken(token)
+                    Log.i(
+                        TAG,
+                        "refreshToken success(${response.code}, ${response.msg}), token:${token}"
+                    )
+                    Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT)
+                        .show() //"同步token成功"
                 } else {
-                    Log.e(TAG, "refresh token fail(${response.code}, ${response.msg})")
+                    Log.e(TAG, "refreshToken fail(${response.code}, ${response.msg})")
+                    token = null
+                    clearToken(token)
+                    showToken(token)
+                    /*Toast.makeText(
+                        applicationContext,
+                        "同步token失败(${response.code}, ${response.msg})",
+                        Toast.LENGTH_SHORT
+                    ).show()*/
                 }
             }
         }
@@ -113,12 +126,13 @@ class MainActivity : AppCompatActivity() {
             if (validNamePassword(name, password)) {
                 Log.i(TAG, "signup, name:${name}, password:${password}, device:${device}")
 
-                lifecycleScope.launch {
+                lifecycleScope.launch(Dispatchers.Main) {
                     val response = signupInBackground(name, password, device)
                     Log.i(TAG, "signup, response:${response}")
                     if (response.code == 0) {
                         Log.e(TAG, "signup success(${response.code}, ${response.msg})")
-                        Toast.makeText(applicationContext, "注册成功", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT)
+                            .show() //"注册成功"
                         token = response.data
                         saveToke(token)
                         showToken(token)
@@ -164,12 +178,13 @@ class MainActivity : AppCompatActivity() {
             if (validNamePassword(name, password)) {
                 Log.i(TAG, "login, name:${name}, password:${password}, device:${device}")
 
-                lifecycleScope.launch {
+                lifecycleScope.launch(Dispatchers.Main) {
                     val response = loginInBackground(name, password, device)
                     Log.i(TAG, "login, response:${response}")
                     if (response.code == 0) {
                         Log.e(TAG, "login success(${response.code}, ${response.msg})")
-                        Toast.makeText(applicationContext, "登录成功", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT)
+                            .show() //"登录成功"
                         token = response.data
                         saveToke(token)
                         showToken(token)
@@ -208,12 +223,13 @@ class MainActivity : AppCompatActivity() {
         } else {
             Log.i(TAG, "logout, token:${token}")
 
-            lifecycleScope.launch {
+            lifecycleScope.launch(Dispatchers.Main) {
                 val response = logoutInBackground(token)
                 Log.i(TAG, "logout, response:${response}")
                 if (response.code == 0) {
                     Log.e(TAG, "logout success(${response.code}, ${response.msg})")
-                    Toast.makeText(applicationContext, "登出成功", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT)
+                        .show() //"登出成功"
                     token = null
                     clearToken(token)
                     showToken(token)

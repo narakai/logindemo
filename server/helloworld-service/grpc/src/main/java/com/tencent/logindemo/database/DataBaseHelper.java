@@ -50,9 +50,12 @@ public class DataBaseHelper {
         }
     }
 
+    /**
+     * 判断指定名称的用户是否存在
+     */
     public boolean isUserExist(String name) {
         try {
-            String sql = "SELECT * FROM user WHERE name='" + name + "'";
+            String sql = "SELECT (name, salt) FROM user WHERE name='" + name + "'";
             logger.info("isUserExist executeSql: " + sql);
             ResultSet rs = statement.executeQuery(sql);
             return rs.next();
@@ -62,6 +65,45 @@ public class DataBaseHelper {
         return false;
     }
 
+    /**
+     * 判断指定名称用户的token是否存在
+     */
+    public boolean isTokenExist(String name) {
+        try {
+            String sql = "SELECT (userName, token) FROM token WHERE userName='" + name + "'";
+            logger.info("isTokenExist executeSql: " + sql);
+            ResultSet rs = statement.executeQuery(sql);
+            return rs.next();
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, "isTokenExist fail", ex);
+        }
+        return false;
+    }
+
+    /**
+     * TODO：暂不考虑这里多次SQL操作存在可以合并的优化手段
+     */
+    public boolean isPasswordCorrect(String name, String password) {
+        try {
+            String sql = "SELECT (name, salt) FROM user WHERE name='" + name + "'";
+            logger.info("isPasswordCorrect executeSql: " + sql);
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs.next()) {
+                String salt = rs.getString(2);//TODO: 利用salt对password进行加密并进行对比
+                String sql2 = "SELECT name FROM user WHERE name='" + name + "' and password='" + password + "'";
+                logger.info("isPasswordCorrect executeSql: " + sql);
+                ResultSet rs2 = statement.executeQuery(sql2);
+                return rs2.next();
+            }
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, "isPasswordCorrect fail", ex);
+        }
+        return false;
+    }
+
+    /**
+     * 新增用户
+     */
     public boolean addNewUser(String name, String password, String salt) {
         try {
             String sql = "INSERT INTO user(name, password, salt) VALUES ('" + name + "', '" + password + "', '" + salt + "')";
@@ -73,6 +115,9 @@ public class DataBaseHelper {
         return false;
     }
 
+    /**
+     * 新增token
+     */
     public boolean addNewToken(String name, String device, String token) {
         try {
             String sql = "INSERT INTO token(userName, device, token) VALUES ('" + name + "', '" + device + "', '" + token + "')";
@@ -80,6 +125,20 @@ public class DataBaseHelper {
             return statement.executeUpdate(sql) >= 1;
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "addNewToken fail", ex);
+        }
+        return false;
+    }
+
+    /**
+     * 更新token
+     */
+    public boolean updateToken(String name, String device, String token, int status) {
+        try {
+            String sql = "UPDATE token SET userName='" + name + "', device='" + device + "', token='" + token + "', status=" + status + " WHERE userName='" + name + "'";
+            logger.info("updateToken executeSql: " + sql);
+            return statement.executeUpdate(sql) >= 1;
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, "updateToken fail", ex);
         }
         return false;
     }
