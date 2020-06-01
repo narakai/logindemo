@@ -4,9 +4,12 @@ import com.tencent.logindemo.database.DataBaseHelper;
 import com.tencent.logindemo.proto.*;
 import io.grpc.stub.StreamObserver;
 
+import java.util.Random;
 import java.util.logging.Logger;
 
 /**
+ * 处理客户端的注册、登录、登出和测试调通的rpc调用
+ * <p>
  * See https://grpc.io/docs/tutorials/basic/java/
  * See https://www.baeldung.com/grpc-introduction
  */
@@ -28,14 +31,24 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
         String password = request.getPassword();
         String device = request.getDevice();
 
-        boolean isUserExist = DataBaseHelper.getInstance().isUserExist(name);
+        /*boolean isUserExist = DataBaseHelper.getInstance().isUserExist(name);
         if (!isUserExist) {
             DataBaseHelper.getInstance().addNewUser(name, password, device);
         } else {
             LoginResponse response = LoginResponse.newBuilder().setCode(0).setMessage("OK").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
-        }
+        }*/
+
+        DataBaseHelper.getInstance().open();
+
+        DataBaseHelper.getInstance().addNewUser(name, password, device);
+
+        DataBaseHelper.getInstance().close();
+
+        LoginResponse response = LoginResponse.newBuilder().setCode(0).setMessage("OK").setTokenInfo(TokenInfo.newBuilder().setToken("token#"+ new Random(100).nextInt()).build()).build();
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
     }
 
     @Override

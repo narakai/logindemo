@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class DataBaseHelper {
 
     private static final Logger logger = Logger.getLogger(HelloWorldServer.class.getName());
-    private final String DB_URL = "jdbc:mysql://localhost:3308/logindemo?useUnicode=true&characterEncoding=UTF-8";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/logindemo?useUnicode=true&characterEncoding=UTF-8";
 
     private static final String USER = "root";
     private static final String PASS = "root";
@@ -40,7 +40,7 @@ public class DataBaseHelper {
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
             statement = connection.createStatement();
         } catch (SQLException ex) {
-            logger.log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, "open fail", ex);
         }
     }
 
@@ -49,7 +49,7 @@ public class DataBaseHelper {
             statement.close();
             connection.close();
         } catch (SQLException ex) {
-            logger.log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, "close fail", ex);
         }
     }
 
@@ -58,24 +58,31 @@ public class DataBaseHelper {
             logger.info("executeSql: " + sql);
             return statement.executeQuery(sql);
         } catch (SQLException ex) {
-            logger.log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, "executeSql fail", ex);
         }
         return null;
     }
 
     public boolean isUserExist(String name) {
         try {
-            String sql = "SELECT * FROM person WHERE name=" + name;
+            String sql = "SELECT * FROM user WHERE name=" + name;
             ResultSet rs = executeSql(sql);
             return rs.next();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, "isUserExist fail", ex);
         }
         return false;
     }
 
-    public void addNewUser(String name, String password, String device) {
-
+    public boolean addNewUser(String name, String password, String device) {
+        try {
+            String sql = "INSERT user(name, password, salt) VALUES ('"+ name+"', '"+password+"', '"+device+"')";
+            ResultSet rs = executeSql(sql);
+            return rs.next();
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, "addNewUser fail", ex);
+        }
+        return false;
     }
 
     public void test() {

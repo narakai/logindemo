@@ -1,6 +1,5 @@
 package com.tencent.logindemo;
 
-import com.tencent.logindemo.database.DataBaseHelper;
 import com.tencent.logindemo.service.HelloWorldService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -9,6 +8,9 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+/**
+ * 这里负责启动后台server，实际处理逻辑是在 {@link HelloWorldService}中
+ */
 public class HelloWorldServer {
 
     private static final Logger logger = Logger.getLogger(HelloWorldServer.class.getName());
@@ -16,8 +18,6 @@ public class HelloWorldServer {
     private Server server;
 
     private void start() throws IOException {
-        //DataBaseHelper.getInstance().open();
-
         int port = 50051;
         server = ServerBuilder.forPort(port)
                 .addService(new HelloWorldService())
@@ -31,7 +31,6 @@ public class HelloWorldServer {
                 // Use stderr here since the logger may have been reset by its JVM shutdown hook.
                 System.err.println("*** shutting down gRPC server since JVM is shutting down");
                 try {
-                    //DataBaseHelper.getInstance().close();
                     HelloWorldServer.this.stop();
                 } catch (InterruptedException e) {
                     e.printStackTrace(System.err);
