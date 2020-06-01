@@ -76,7 +76,7 @@ public class DataBaseHelper {
 
     public boolean addNewUser(String name, String password, String device) {
         try {
-            String sql = "INSERT user(name, password, salt) VALUES ('"+ name+"', '"+password+"', '"+device+"')";
+            String sql = "INSERT INTO user(name, password, salt) VALUES ('" + name + "', '" + password + "', '" + device + "')";
             ResultSet rs = executeSql(sql);
             return rs.next();
         } catch (SQLException ex) {

@@ -4,6 +4,7 @@ services:
     #数据库使用MySQL 8.0.17
     mysql:
         build: ./mysql
+        container_name: helloworld-service_mysql
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: logindemo
@@ -16,6 +17,7 @@ services:
     #查看数据库内容工具adminer
     adminer:
         image: adminer
+        container_name: helloworld-service_adminer
         ports:
             - "8080:8080"
 
