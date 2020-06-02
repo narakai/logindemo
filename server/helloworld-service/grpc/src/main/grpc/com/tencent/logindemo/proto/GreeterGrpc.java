@@ -59,28 +59,28 @@ public final class GreeterGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<com.tencent.logindemo.proto.LoginRequest,
-      com.tencent.logindemo.proto.LoginResponse> getSignupMethod;
+      com.tencent.logindemo.proto.CommonResponse> getSignupMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Signup",
       requestType = com.tencent.logindemo.proto.LoginRequest.class,
-      responseType = com.tencent.logindemo.proto.LoginResponse.class,
+      responseType = com.tencent.logindemo.proto.CommonResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.tencent.logindemo.proto.LoginRequest,
-      com.tencent.logindemo.proto.LoginResponse> getSignupMethod() {
-    io.grpc.MethodDescriptor<com.tencent.logindemo.proto.LoginRequest, com.tencent.logindemo.proto.LoginResponse> getSignupMethod;
+      com.tencent.logindemo.proto.CommonResponse> getSignupMethod() {
+    io.grpc.MethodDescriptor<com.tencent.logindemo.proto.LoginRequest, com.tencent.logindemo.proto.CommonResponse> getSignupMethod;
     if ((getSignupMethod = GreeterGrpc.getSignupMethod) == null) {
       synchronized (GreeterGrpc.class) {
         if ((getSignupMethod = GreeterGrpc.getSignupMethod) == null) {
           GreeterGrpc.getSignupMethod = getSignupMethod =
-              io.grpc.MethodDescriptor.<com.tencent.logindemo.proto.LoginRequest, com.tencent.logindemo.proto.LoginResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.tencent.logindemo.proto.LoginRequest, com.tencent.logindemo.proto.CommonResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Signup"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.tencent.logindemo.proto.LoginRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.tencent.logindemo.proto.LoginResponse.getDefaultInstance()))
+                  com.tencent.logindemo.proto.CommonResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GreeterMethodDescriptorSupplier("Signup"))
               .build();
         }
@@ -90,28 +90,28 @@ public final class GreeterGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<com.tencent.logindemo.proto.LoginRequest,
-      com.tencent.logindemo.proto.LoginResponse> getLoginMethod;
+      com.tencent.logindemo.proto.CommonResponse> getLoginMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Login",
       requestType = com.tencent.logindemo.proto.LoginRequest.class,
-      responseType = com.tencent.logindemo.proto.LoginResponse.class,
+      responseType = com.tencent.logindemo.proto.CommonResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.tencent.logindemo.proto.LoginRequest,
-      com.tencent.logindemo.proto.LoginResponse> getLoginMethod() {
-    io.grpc.MethodDescriptor<com.tencent.logindemo.proto.LoginRequest, com.tencent.logindemo.proto.LoginResponse> getLoginMethod;
+      com.tencent.logindemo.proto.CommonResponse> getLoginMethod() {
+    io.grpc.MethodDescriptor<com.tencent.logindemo.proto.LoginRequest, com.tencent.logindemo.proto.CommonResponse> getLoginMethod;
     if ((getLoginMethod = GreeterGrpc.getLoginMethod) == null) {
       synchronized (GreeterGrpc.class) {
         if ((getLoginMethod = GreeterGrpc.getLoginMethod) == null) {
           GreeterGrpc.getLoginMethod = getLoginMethod =
-              io.grpc.MethodDescriptor.<com.tencent.logindemo.proto.LoginRequest, com.tencent.logindemo.proto.LoginResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.tencent.logindemo.proto.LoginRequest, com.tencent.logindemo.proto.CommonResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Login"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.tencent.logindemo.proto.LoginRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.tencent.logindemo.proto.LoginResponse.getDefaultInstance()))
+                  com.tencent.logindemo.proto.CommonResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GreeterMethodDescriptorSupplier("Login"))
               .build();
         }
@@ -121,28 +121,28 @@ public final class GreeterGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<com.tencent.logindemo.proto.TokenInfo,
-      com.tencent.logindemo.proto.LoginResponse> getLogoutMethod;
+      com.tencent.logindemo.proto.CommonResponse> getLogoutMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Logout",
       requestType = com.tencent.logindemo.proto.TokenInfo.class,
-      responseType = com.tencent.logindemo.proto.LoginResponse.class,
+      responseType = com.tencent.logindemo.proto.CommonResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.tencent.logindemo.proto.TokenInfo,
-      com.tencent.logindemo.proto.LoginResponse> getLogoutMethod() {
-    io.grpc.MethodDescriptor<com.tencent.logindemo.proto.TokenInfo, com.tencent.logindemo.proto.LoginResponse> getLogoutMethod;
+      com.tencent.logindemo.proto.CommonResponse> getLogoutMethod() {
+    io.grpc.MethodDescriptor<com.tencent.logindemo.proto.TokenInfo, com.tencent.logindemo.proto.CommonResponse> getLogoutMethod;
     if ((getLogoutMethod = GreeterGrpc.getLogoutMethod) == null) {
       synchronized (GreeterGrpc.class) {
         if ((getLogoutMethod = GreeterGrpc.getLogoutMethod) == null) {
           GreeterGrpc.getLogoutMethod = getLogoutMethod =
-              io.grpc.MethodDescriptor.<com.tencent.logindemo.proto.TokenInfo, com.tencent.logindemo.proto.LoginResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.tencent.logindemo.proto.TokenInfo, com.tencent.logindemo.proto.CommonResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Logout"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.tencent.logindemo.proto.TokenInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.tencent.logindemo.proto.LoginResponse.getDefaultInstance()))
+                  com.tencent.logindemo.proto.CommonResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GreeterMethodDescriptorSupplier("Logout"))
               .build();
         }
@@ -151,29 +151,29 @@ public final class GreeterGrpc {
     return getLogoutMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.tencent.logindemo.proto.TokenInfo,
-      com.tencent.logindemo.proto.LoginResponse> getRefreshTokenMethod;
+  private static volatile io.grpc.MethodDescriptor<com.tencent.logindemo.proto.RefreshTokenRequest,
+      com.tencent.logindemo.proto.CommonResponse> getRefreshTokenMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "RefreshToken",
-      requestType = com.tencent.logindemo.proto.TokenInfo.class,
-      responseType = com.tencent.logindemo.proto.LoginResponse.class,
+      requestType = com.tencent.logindemo.proto.RefreshTokenRequest.class,
+      responseType = com.tencent.logindemo.proto.CommonResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.tencent.logindemo.proto.TokenInfo,
-      com.tencent.logindemo.proto.LoginResponse> getRefreshTokenMethod() {
-    io.grpc.MethodDescriptor<com.tencent.logindemo.proto.TokenInfo, com.tencent.logindemo.proto.LoginResponse> getRefreshTokenMethod;
+  public static io.grpc.MethodDescriptor<com.tencent.logindemo.proto.RefreshTokenRequest,
+      com.tencent.logindemo.proto.CommonResponse> getRefreshTokenMethod() {
+    io.grpc.MethodDescriptor<com.tencent.logindemo.proto.RefreshTokenRequest, com.tencent.logindemo.proto.CommonResponse> getRefreshTokenMethod;
     if ((getRefreshTokenMethod = GreeterGrpc.getRefreshTokenMethod) == null) {
       synchronized (GreeterGrpc.class) {
         if ((getRefreshTokenMethod = GreeterGrpc.getRefreshTokenMethod) == null) {
           GreeterGrpc.getRefreshTokenMethod = getRefreshTokenMethod =
-              io.grpc.MethodDescriptor.<com.tencent.logindemo.proto.TokenInfo, com.tencent.logindemo.proto.LoginResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.tencent.logindemo.proto.RefreshTokenRequest, com.tencent.logindemo.proto.CommonResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RefreshToken"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.tencent.logindemo.proto.TokenInfo.getDefaultInstance()))
+                  com.tencent.logindemo.proto.RefreshTokenRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.tencent.logindemo.proto.LoginResponse.getDefaultInstance()))
+                  com.tencent.logindemo.proto.CommonResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GreeterMethodDescriptorSupplier("RefreshToken"))
               .build();
         }
@@ -240,28 +240,28 @@ public final class GreeterGrpc {
     /**
      */
     public void signup(com.tencent.logindemo.proto.LoginRequest request,
-        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getSignupMethod(), responseObserver);
     }
 
     /**
      */
     public void login(com.tencent.logindemo.proto.LoginRequest request,
-        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getLoginMethod(), responseObserver);
     }
 
     /**
      */
     public void logout(com.tencent.logindemo.proto.TokenInfo request,
-        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getLogoutMethod(), responseObserver);
     }
 
     /**
      */
-    public void refreshToken(com.tencent.logindemo.proto.TokenInfo request,
-        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse> responseObserver) {
+    public void refreshToken(com.tencent.logindemo.proto.RefreshTokenRequest request,
+        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getRefreshTokenMethod(), responseObserver);
     }
 
@@ -279,28 +279,28 @@ public final class GreeterGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 com.tencent.logindemo.proto.LoginRequest,
-                com.tencent.logindemo.proto.LoginResponse>(
+                com.tencent.logindemo.proto.CommonResponse>(
                   this, METHODID_SIGNUP)))
           .addMethod(
             getLoginMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 com.tencent.logindemo.proto.LoginRequest,
-                com.tencent.logindemo.proto.LoginResponse>(
+                com.tencent.logindemo.proto.CommonResponse>(
                   this, METHODID_LOGIN)))
           .addMethod(
             getLogoutMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 com.tencent.logindemo.proto.TokenInfo,
-                com.tencent.logindemo.proto.LoginResponse>(
+                com.tencent.logindemo.proto.CommonResponse>(
                   this, METHODID_LOGOUT)))
           .addMethod(
             getRefreshTokenMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.tencent.logindemo.proto.TokenInfo,
-                com.tencent.logindemo.proto.LoginResponse>(
+                com.tencent.logindemo.proto.RefreshTokenRequest,
+                com.tencent.logindemo.proto.CommonResponse>(
                   this, METHODID_REFRESH_TOKEN)))
           .build();
     }
@@ -331,7 +331,7 @@ public final class GreeterGrpc {
     /**
      */
     public void signup(com.tencent.logindemo.proto.LoginRequest request,
-        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getSignupMethod(), getCallOptions()), request, responseObserver);
     }
@@ -339,7 +339,7 @@ public final class GreeterGrpc {
     /**
      */
     public void login(com.tencent.logindemo.proto.LoginRequest request,
-        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request, responseObserver);
     }
@@ -347,15 +347,15 @@ public final class GreeterGrpc {
     /**
      */
     public void logout(com.tencent.logindemo.proto.TokenInfo request,
-        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getLogoutMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void refreshToken(com.tencent.logindemo.proto.TokenInfo request,
-        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse> responseObserver) {
+    public void refreshToken(com.tencent.logindemo.proto.RefreshTokenRequest request,
+        io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getRefreshTokenMethod(), getCallOptions()), request, responseObserver);
     }
@@ -384,28 +384,28 @@ public final class GreeterGrpc {
 
     /**
      */
-    public com.tencent.logindemo.proto.LoginResponse signup(com.tencent.logindemo.proto.LoginRequest request) {
+    public com.tencent.logindemo.proto.CommonResponse signup(com.tencent.logindemo.proto.LoginRequest request) {
       return blockingUnaryCall(
           getChannel(), getSignupMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.tencent.logindemo.proto.LoginResponse login(com.tencent.logindemo.proto.LoginRequest request) {
+    public com.tencent.logindemo.proto.CommonResponse login(com.tencent.logindemo.proto.LoginRequest request) {
       return blockingUnaryCall(
           getChannel(), getLoginMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.tencent.logindemo.proto.LoginResponse logout(com.tencent.logindemo.proto.TokenInfo request) {
+    public com.tencent.logindemo.proto.CommonResponse logout(com.tencent.logindemo.proto.TokenInfo request) {
       return blockingUnaryCall(
           getChannel(), getLogoutMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.tencent.logindemo.proto.LoginResponse refreshToken(com.tencent.logindemo.proto.TokenInfo request) {
+    public com.tencent.logindemo.proto.CommonResponse refreshToken(com.tencent.logindemo.proto.RefreshTokenRequest request) {
       return blockingUnaryCall(
           getChannel(), getRefreshTokenMethod(), getCallOptions(), request);
     }
@@ -435,7 +435,7 @@ public final class GreeterGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.tencent.logindemo.proto.LoginResponse> signup(
+    public com.google.common.util.concurrent.ListenableFuture<com.tencent.logindemo.proto.CommonResponse> signup(
         com.tencent.logindemo.proto.LoginRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getSignupMethod(), getCallOptions()), request);
@@ -443,7 +443,7 @@ public final class GreeterGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.tencent.logindemo.proto.LoginResponse> login(
+    public com.google.common.util.concurrent.ListenableFuture<com.tencent.logindemo.proto.CommonResponse> login(
         com.tencent.logindemo.proto.LoginRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request);
@@ -451,7 +451,7 @@ public final class GreeterGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.tencent.logindemo.proto.LoginResponse> logout(
+    public com.google.common.util.concurrent.ListenableFuture<com.tencent.logindemo.proto.CommonResponse> logout(
         com.tencent.logindemo.proto.TokenInfo request) {
       return futureUnaryCall(
           getChannel().newCall(getLogoutMethod(), getCallOptions()), request);
@@ -459,8 +459,8 @@ public final class GreeterGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.tencent.logindemo.proto.LoginResponse> refreshToken(
-        com.tencent.logindemo.proto.TokenInfo request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.tencent.logindemo.proto.CommonResponse> refreshToken(
+        com.tencent.logindemo.proto.RefreshTokenRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getRefreshTokenMethod(), getCallOptions()), request);
     }
@@ -495,19 +495,19 @@ public final class GreeterGrpc {
           break;
         case METHODID_SIGNUP:
           serviceImpl.signup((com.tencent.logindemo.proto.LoginRequest) request,
-              (io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse>) responseObserver);
           break;
         case METHODID_LOGIN:
           serviceImpl.login((com.tencent.logindemo.proto.LoginRequest) request,
-              (io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse>) responseObserver);
           break;
         case METHODID_LOGOUT:
           serviceImpl.logout((com.tencent.logindemo.proto.TokenInfo) request,
-              (io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse>) responseObserver);
           break;
         case METHODID_REFRESH_TOKEN:
-          serviceImpl.refreshToken((com.tencent.logindemo.proto.TokenInfo) request,
-              (io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.LoginResponse>) responseObserver);
+          serviceImpl.refreshToken((com.tencent.logindemo.proto.RefreshTokenRequest) request,
+              (io.grpc.stub.StreamObserver<com.tencent.logindemo.proto.CommonResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();

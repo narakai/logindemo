@@ -43,33 +43,33 @@ class Greeter final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>> PrepareAsyncSayHello(::grpc::ClientContext* context, const ::helloworld::HelloRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>>(PrepareAsyncSayHelloRaw(context, request, cq));
     }
-    virtual ::grpc::Status Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::helloworld::LoginResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>> AsyncSignup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>>(AsyncSignupRaw(context, request, cq));
+    virtual ::grpc::Status Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::helloworld::CommonResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>> AsyncSignup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>>(AsyncSignupRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>> PrepareAsyncSignup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>>(PrepareAsyncSignupRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>> PrepareAsyncSignup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>>(PrepareAsyncSignupRaw(context, request, cq));
     }
-    virtual ::grpc::Status Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::helloworld::LoginResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>> AsyncLogin(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>>(AsyncLoginRaw(context, request, cq));
+    virtual ::grpc::Status Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::helloworld::CommonResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>> AsyncLogin(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>>(AsyncLoginRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>> PrepareAsyncLogin(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>>(PrepareAsyncLoginRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>> PrepareAsyncLogin(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>>(PrepareAsyncLoginRaw(context, request, cq));
     }
-    virtual ::grpc::Status Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::helloworld::LoginResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>> AsyncLogout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>>(AsyncLogoutRaw(context, request, cq));
+    virtual ::grpc::Status Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::helloworld::CommonResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>> AsyncLogout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>>(AsyncLogoutRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>> PrepareAsyncLogout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>>(PrepareAsyncLogoutRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>> PrepareAsyncLogout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>>(PrepareAsyncLogoutRaw(context, request, cq));
     }
-    virtual ::grpc::Status RefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::helloworld::LoginResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>> AsyncRefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>>(AsyncRefreshTokenRaw(context, request, cq));
+    virtual ::grpc::Status RefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest& request, ::helloworld::CommonResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>> AsyncRefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>>(AsyncRefreshTokenRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>> PrepareAsyncRefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>>(PrepareAsyncRefreshTokenRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>> PrepareAsyncRefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>>(PrepareAsyncRefreshTokenRaw(context, request, cq));
     }
     class experimental_async_interface {
      public:
@@ -86,53 +86,53 @@ class Greeter final {
       #else
       virtual void SayHello(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      virtual void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      virtual void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      virtual void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      virtual void RefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void RefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void RefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void RefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void RefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void RefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
     };
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -145,14 +145,14 @@ class Greeter final {
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>* AsyncSayHelloRaw(::grpc::ClientContext* context, const ::helloworld::HelloRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>* PrepareAsyncSayHelloRaw(::grpc::ClientContext* context, const ::helloworld::HelloRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>* AsyncSignupRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>* PrepareAsyncSignupRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>* AsyncLoginRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>* AsyncLogoutRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>* PrepareAsyncLogoutRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>* AsyncRefreshTokenRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::LoginResponse>* PrepareAsyncRefreshTokenRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>* AsyncSignupRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>* PrepareAsyncSignupRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>* AsyncLoginRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>* AsyncLogoutRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>* PrepareAsyncLogoutRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>* AsyncRefreshTokenRaw(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::CommonResponse>* PrepareAsyncRefreshTokenRaw(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -164,33 +164,33 @@ class Greeter final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>> PrepareAsyncSayHello(::grpc::ClientContext* context, const ::helloworld::HelloRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>>(PrepareAsyncSayHelloRaw(context, request, cq));
     }
-    ::grpc::Status Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::helloworld::LoginResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>> AsyncSignup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>>(AsyncSignupRaw(context, request, cq));
+    ::grpc::Status Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::helloworld::CommonResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>> AsyncSignup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>>(AsyncSignupRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>> PrepareAsyncSignup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>>(PrepareAsyncSignupRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>> PrepareAsyncSignup(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>>(PrepareAsyncSignupRaw(context, request, cq));
     }
-    ::grpc::Status Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::helloworld::LoginResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>> AsyncLogin(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>>(AsyncLoginRaw(context, request, cq));
+    ::grpc::Status Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::helloworld::CommonResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>> AsyncLogin(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>>(AsyncLoginRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>> PrepareAsyncLogin(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>>(PrepareAsyncLoginRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>> PrepareAsyncLogin(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>>(PrepareAsyncLoginRaw(context, request, cq));
     }
-    ::grpc::Status Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::helloworld::LoginResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>> AsyncLogout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>>(AsyncLogoutRaw(context, request, cq));
+    ::grpc::Status Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::helloworld::CommonResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>> AsyncLogout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>>(AsyncLogoutRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>> PrepareAsyncLogout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>>(PrepareAsyncLogoutRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>> PrepareAsyncLogout(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>>(PrepareAsyncLogoutRaw(context, request, cq));
     }
-    ::grpc::Status RefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::helloworld::LoginResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>> AsyncRefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>>(AsyncRefreshTokenRaw(context, request, cq));
+    ::grpc::Status RefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest& request, ::helloworld::CommonResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>> AsyncRefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>>(AsyncRefreshTokenRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>> PrepareAsyncRefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>>(PrepareAsyncRefreshTokenRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>> PrepareAsyncRefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>>(PrepareAsyncRefreshTokenRaw(context, request, cq));
     }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
@@ -207,53 +207,53 @@ class Greeter final {
       #else
       void SayHello(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) override;
-      void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) override;
+      void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) override;
+      void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void Signup(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void Signup(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) override;
-      void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) override;
+      void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) override;
+      void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) override;
-      void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void Login(::grpc::ClientContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void RefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) override;
-      void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, std::function<void(::grpc::Status)>) override;
+      void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) override;
+      void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void RefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void RefreshToken(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void Logout(::grpc::ClientContext* context, const ::helloworld::TokenInfo* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void Logout(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void RefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) override;
+      void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void RefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void RefreshToken(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void RefreshToken(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::CommonResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
      private:
       friend class Stub;
@@ -268,14 +268,14 @@ class Greeter final {
     class experimental_async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* AsyncSayHelloRaw(::grpc::ClientContext* context, const ::helloworld::HelloRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* PrepareAsyncSayHelloRaw(::grpc::ClientContext* context, const ::helloworld::HelloRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* AsyncSignupRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* PrepareAsyncSignupRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* AsyncLoginRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* AsyncLogoutRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* PrepareAsyncLogoutRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* AsyncRefreshTokenRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::helloworld::LoginResponse>* PrepareAsyncRefreshTokenRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>* AsyncSignupRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>* PrepareAsyncSignupRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>* AsyncLoginRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::helloworld::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>* AsyncLogoutRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>* PrepareAsyncLogoutRaw(::grpc::ClientContext* context, const ::helloworld::TokenInfo& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>* AsyncRefreshTokenRaw(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::CommonResponse>* PrepareAsyncRefreshTokenRaw(::grpc::ClientContext* context, const ::helloworld::RefreshTokenRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SayHello_;
     const ::grpc::internal::RpcMethod rpcmethod_Signup_;
     const ::grpc::internal::RpcMethod rpcmethod_Login_;
@@ -289,10 +289,10 @@ class Greeter final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status SayHello(::grpc::ServerContext* context, const ::helloworld::HelloRequest* request, ::helloworld::HelloReply* response);
-    virtual ::grpc::Status Signup(::grpc::ServerContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response);
-    virtual ::grpc::Status Login(::grpc::ServerContext* context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response);
-    virtual ::grpc::Status Logout(::grpc::ServerContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response);
-    virtual ::grpc::Status RefreshToken(::grpc::ServerContext* context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response);
+    virtual ::grpc::Status Signup(::grpc::ServerContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response);
+    virtual ::grpc::Status Login(::grpc::ServerContext* context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response);
+    virtual ::grpc::Status Logout(::grpc::ServerContext* context, const ::helloworld::TokenInfo* request, ::helloworld::CommonResponse* response);
+    virtual ::grpc::Status RefreshToken(::grpc::ServerContext* context, const ::helloworld::RefreshTokenRequest* request, ::helloworld::CommonResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_SayHello : public BaseClass {
@@ -326,11 +326,11 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSignup(::grpc::ServerContext* context, ::helloworld::LoginRequest* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::LoginResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSignup(::grpc::ServerContext* context, ::helloworld::LoginRequest* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::CommonResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -346,11 +346,11 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestLogin(::grpc::ServerContext* context, ::helloworld::LoginRequest* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::LoginResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestLogin(::grpc::ServerContext* context, ::helloworld::LoginRequest* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::CommonResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -366,11 +366,11 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestLogout(::grpc::ServerContext* context, ::helloworld::TokenInfo* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::LoginResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestLogout(::grpc::ServerContext* context, ::helloworld::TokenInfo* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::CommonResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -386,11 +386,11 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::RefreshTokenRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestRefreshToken(::grpc::ServerContext* context, ::helloworld::TokenInfo* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::LoginResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRefreshToken(::grpc::ServerContext* context, ::helloworld::RefreshTokenRequest* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::CommonResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -454,38 +454,38 @@ class Greeter final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(1,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::LoginRequest, ::helloworld::LoginResponse>(
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::LoginRequest, ::helloworld::CommonResponse>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response) { return this->Signup(context, request, response); }));}
+                     context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response) { return this->Signup(context, request, response); }));}
     void SetMessageAllocatorFor_Signup(
-        ::grpc::experimental::MessageAllocator< ::helloworld::LoginRequest, ::helloworld::LoginResponse>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::helloworld::LoginRequest, ::helloworld::CommonResponse>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
     #else
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
     #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::LoginRequest, ::helloworld::LoginResponse>*>(handler)
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::LoginRequest, ::helloworld::CommonResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_Signup() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* Signup(
-      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/)
+      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/)
     #else
     virtual ::grpc::experimental::ServerUnaryReactor* Signup(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/)
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -501,38 +501,38 @@ class Greeter final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(2,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::LoginRequest, ::helloworld::LoginResponse>(
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::LoginRequest, ::helloworld::CommonResponse>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::helloworld::LoginRequest* request, ::helloworld::LoginResponse* response) { return this->Login(context, request, response); }));}
+                     context, const ::helloworld::LoginRequest* request, ::helloworld::CommonResponse* response) { return this->Login(context, request, response); }));}
     void SetMessageAllocatorFor_Login(
-        ::grpc::experimental::MessageAllocator< ::helloworld::LoginRequest, ::helloworld::LoginResponse>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::helloworld::LoginRequest, ::helloworld::CommonResponse>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
     #else
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
     #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::LoginRequest, ::helloworld::LoginResponse>*>(handler)
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::LoginRequest, ::helloworld::CommonResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_Login() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* Login(
-      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/)
+      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/)
     #else
     virtual ::grpc::experimental::ServerUnaryReactor* Login(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/)
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -548,38 +548,38 @@ class Greeter final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(3,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::TokenInfo, ::helloworld::LoginResponse>(
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::TokenInfo, ::helloworld::CommonResponse>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response) { return this->Logout(context, request, response); }));}
+                     context, const ::helloworld::TokenInfo* request, ::helloworld::CommonResponse* response) { return this->Logout(context, request, response); }));}
     void SetMessageAllocatorFor_Logout(
-        ::grpc::experimental::MessageAllocator< ::helloworld::TokenInfo, ::helloworld::LoginResponse>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::helloworld::TokenInfo, ::helloworld::CommonResponse>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
     #else
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
     #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::TokenInfo, ::helloworld::LoginResponse>*>(handler)
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::TokenInfo, ::helloworld::CommonResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_Logout() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* Logout(
-      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/)
+      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::CommonResponse* /*response*/)
     #else
     virtual ::grpc::experimental::ServerUnaryReactor* Logout(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/)
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::CommonResponse* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -595,38 +595,38 @@ class Greeter final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(4,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::TokenInfo, ::helloworld::LoginResponse>(
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::RefreshTokenRequest, ::helloworld::CommonResponse>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::helloworld::TokenInfo* request, ::helloworld::LoginResponse* response) { return this->RefreshToken(context, request, response); }));}
+                     context, const ::helloworld::RefreshTokenRequest* request, ::helloworld::CommonResponse* response) { return this->RefreshToken(context, request, response); }));}
     void SetMessageAllocatorFor_RefreshToken(
-        ::grpc::experimental::MessageAllocator< ::helloworld::TokenInfo, ::helloworld::LoginResponse>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::helloworld::RefreshTokenRequest, ::helloworld::CommonResponse>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
     #else
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
     #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::TokenInfo, ::helloworld::LoginResponse>*>(handler)
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::RefreshTokenRequest, ::helloworld::CommonResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_RefreshToken() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::RefreshTokenRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* RefreshToken(
-      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/)
+      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::RefreshTokenRequest* /*request*/, ::helloworld::CommonResponse* /*response*/)
     #else
     virtual ::grpc::experimental::ServerUnaryReactor* RefreshToken(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/)
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::RefreshTokenRequest* /*request*/, ::helloworld::CommonResponse* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -664,7 +664,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -681,7 +681,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -698,7 +698,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -715,7 +715,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::RefreshTokenRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -752,7 +752,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -772,7 +772,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -792,7 +792,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -812,7 +812,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::RefreshTokenRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -883,7 +883,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -921,7 +921,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -959,7 +959,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -997,7 +997,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::RefreshTokenRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1045,10 +1045,10 @@ class Greeter final {
     WithStreamedUnaryMethod_Signup() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::helloworld::LoginRequest, ::helloworld::LoginResponse>(
+          ::helloworld::LoginRequest, ::helloworld::CommonResponse>(
             [this](::grpc_impl::ServerContext* context,
                    ::grpc_impl::ServerUnaryStreamer<
-                     ::helloworld::LoginRequest, ::helloworld::LoginResponse>* streamer) {
+                     ::helloworld::LoginRequest, ::helloworld::CommonResponse>* streamer) {
                        return this->StreamedSignup(context,
                          streamer);
                   }));
@@ -1057,12 +1057,12 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Signup(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSignup(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::LoginRequest,::helloworld::LoginResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedSignup(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::LoginRequest,::helloworld::CommonResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_Login : public BaseClass {
@@ -1072,10 +1072,10 @@ class Greeter final {
     WithStreamedUnaryMethod_Login() {
       ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::helloworld::LoginRequest, ::helloworld::LoginResponse>(
+          ::helloworld::LoginRequest, ::helloworld::CommonResponse>(
             [this](::grpc_impl::ServerContext* context,
                    ::grpc_impl::ServerUnaryStreamer<
-                     ::helloworld::LoginRequest, ::helloworld::LoginResponse>* streamer) {
+                     ::helloworld::LoginRequest, ::helloworld::CommonResponse>* streamer) {
                        return this->StreamedLogin(context,
                          streamer);
                   }));
@@ -1084,12 +1084,12 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::helloworld::LoginRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedLogin(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::LoginRequest,::helloworld::LoginResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedLogin(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::LoginRequest,::helloworld::CommonResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_Logout : public BaseClass {
@@ -1099,10 +1099,10 @@ class Greeter final {
     WithStreamedUnaryMethod_Logout() {
       ::grpc::Service::MarkMethodStreamed(3,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::helloworld::TokenInfo, ::helloworld::LoginResponse>(
+          ::helloworld::TokenInfo, ::helloworld::CommonResponse>(
             [this](::grpc_impl::ServerContext* context,
                    ::grpc_impl::ServerUnaryStreamer<
-                     ::helloworld::TokenInfo, ::helloworld::LoginResponse>* streamer) {
+                     ::helloworld::TokenInfo, ::helloworld::CommonResponse>* streamer) {
                        return this->StreamedLogout(context,
                          streamer);
                   }));
@@ -1111,12 +1111,12 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status Logout(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedLogout(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::TokenInfo,::helloworld::LoginResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedLogout(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::TokenInfo,::helloworld::CommonResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_RefreshToken : public BaseClass {
@@ -1126,10 +1126,10 @@ class Greeter final {
     WithStreamedUnaryMethod_RefreshToken() {
       ::grpc::Service::MarkMethodStreamed(4,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::helloworld::TokenInfo, ::helloworld::LoginResponse>(
+          ::helloworld::RefreshTokenRequest, ::helloworld::CommonResponse>(
             [this](::grpc_impl::ServerContext* context,
                    ::grpc_impl::ServerUnaryStreamer<
-                     ::helloworld::TokenInfo, ::helloworld::LoginResponse>* streamer) {
+                     ::helloworld::RefreshTokenRequest, ::helloworld::CommonResponse>* streamer) {
                        return this->StreamedRefreshToken(context,
                          streamer);
                   }));
@@ -1138,12 +1138,12 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::TokenInfo* /*request*/, ::helloworld::LoginResponse* /*response*/) override {
+    ::grpc::Status RefreshToken(::grpc::ServerContext* /*context*/, const ::helloworld::RefreshTokenRequest* /*request*/, ::helloworld::CommonResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedRefreshToken(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::TokenInfo,::helloworld::LoginResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedRefreshToken(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::RefreshTokenRequest,::helloworld::CommonResponse>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_SayHello<WithStreamedUnaryMethod_Signup<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RefreshToken<Service > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;

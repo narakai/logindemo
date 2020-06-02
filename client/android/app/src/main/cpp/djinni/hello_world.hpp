@@ -23,7 +23,7 @@ public:
 
     virtual CommonReponse logout(const std::string & token) = 0;
 
-    virtual CommonReponse refreshToken(const std::string & token) = 0;
+    virtual CommonReponse refreshToken(const std::string & token, const std::string & device) = 0;
 
     virtual std::string sayHello(const std::string & msg) = 0;
 };

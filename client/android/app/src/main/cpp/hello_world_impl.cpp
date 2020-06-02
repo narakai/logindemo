@@ -13,7 +13,8 @@ using helloworld::Greeter;
 using helloworld::HelloReply;
 using helloworld::HelloRequest;
 using helloworld::LoginRequest;
-using helloworld::LoginResponse;
+using helloworld::RefreshTokenRequest;
+using helloworld::CommonResponse;
 using helloworld::TokenInfo;
 
 namespace logindemo {
@@ -37,7 +38,7 @@ namespace logindemo {
         request.set_password(password);
         request.set_device(device);
 
-        LoginResponse response;
+        CommonResponse response;
         ClientContext context;
         Status status = stub_->Signup(&context, request, &response);
 
@@ -55,7 +56,7 @@ namespace logindemo {
         request.set_password(password);
         request.set_device(device);
 
-        LoginResponse response;
+        CommonResponse response;
         ClientContext context;
         Status status = stub_->Login(&context, request, &response);
 
@@ -70,7 +71,7 @@ namespace logindemo {
         TokenInfo request;
         request.set_token(token);
 
-        LoginResponse response;
+        CommonResponse response;
         ClientContext context;
         Status status = stub_->Logout(&context, request, &response);
 
@@ -81,11 +82,12 @@ namespace logindemo {
         }
     }
 
-    CommonReponse HelloWorldImpl::refreshToken(const std::string &token) {
-        TokenInfo request;
+    CommonReponse HelloWorldImpl::refreshToken(const std::string &token, const std::string & device) {
+        RefreshTokenRequest request;
         request.set_token(token);
+        request.set_device(device);
 
-        LoginResponse response;
+        CommonResponse response;
         ClientContext context;
         Status status = stub_->RefreshToken(&context, request, &response);
 

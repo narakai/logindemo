@@ -4,18 +4,18 @@
 package com.tencent.logindemo.proto;
 
 /**
- * Protobuf type {@code helloworld.LoginResponse}
+ * Protobuf type {@code helloworld.CommonResponse}
  */
-public final class LoginResponse extends
+public final class CommonResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:helloworld.LoginResponse)
-    LoginResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:helloworld.CommonResponse)
+    CommonResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use LoginResponse.newBuilder() to construct.
-  private LoginResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use CommonResponse.newBuilder() to construct.
+  private CommonResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private LoginResponse() {
+  private CommonResponse() {
     message_ = "";
   }
 
@@ -23,7 +23,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new LoginResponse();
+    return new CommonResponse();
   }
 
   @java.lang.Override
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private LoginResponse(
+  private CommonResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -94,15 +94,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.tencent.logindemo.proto.HelloWorldProto.internal_static_helloworld_LoginResponse_descriptor;
+    return com.tencent.logindemo.proto.HelloWorldProto.internal_static_helloworld_CommonResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.tencent.logindemo.proto.HelloWorldProto.internal_static_helloworld_LoginResponse_fieldAccessorTable
+    return com.tencent.logindemo.proto.HelloWorldProto.internal_static_helloworld_CommonResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.tencent.logindemo.proto.LoginResponse.class, com.tencent.logindemo.proto.LoginResponse.Builder.class);
+            com.tencent.logindemo.proto.CommonResponse.class, com.tencent.logindemo.proto.CommonResponse.Builder.class);
   }
 
   public static final int CODE_FIELD_NUMBER = 1;
@@ -233,10 +233,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.tencent.logindemo.proto.LoginResponse)) {
+    if (!(obj instanceof com.tencent.logindemo.proto.CommonResponse)) {
       return super.equals(obj);
     }
-    com.tencent.logindemo.proto.LoginResponse other = (com.tencent.logindemo.proto.LoginResponse) obj;
+    com.tencent.logindemo.proto.CommonResponse other = (com.tencent.logindemo.proto.CommonResponse) obj;
 
     if (getCode()
         != other.getCode()) return false;
@@ -271,69 +271,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.tencent.logindemo.proto.LoginResponse parseFrom(
+  public static com.tencent.logindemo.proto.CommonResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseFrom(
+  public static com.tencent.logindemo.proto.CommonResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseFrom(
+  public static com.tencent.logindemo.proto.CommonResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseFrom(
+  public static com.tencent.logindemo.proto.CommonResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseFrom(byte[] data)
+  public static com.tencent.logindemo.proto.CommonResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseFrom(
+  public static com.tencent.logindemo.proto.CommonResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseFrom(java.io.InputStream input)
+  public static com.tencent.logindemo.proto.CommonResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseFrom(
+  public static com.tencent.logindemo.proto.CommonResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.tencent.logindemo.proto.CommonResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseDelimitedFrom(
+  public static com.tencent.logindemo.proto.CommonResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseFrom(
+  public static com.tencent.logindemo.proto.CommonResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.tencent.logindemo.proto.LoginResponse parseFrom(
+  public static com.tencent.logindemo.proto.CommonResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -346,7 +346,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.tencent.logindemo.proto.LoginResponse prototype) {
+  public static Builder newBuilder(com.tencent.logindemo.proto.CommonResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -362,26 +362,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code helloworld.LoginResponse}
+   * Protobuf type {@code helloworld.CommonResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:helloworld.LoginResponse)
-      com.tencent.logindemo.proto.LoginResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:helloworld.CommonResponse)
+      com.tencent.logindemo.proto.CommonResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tencent.logindemo.proto.HelloWorldProto.internal_static_helloworld_LoginResponse_descriptor;
+      return com.tencent.logindemo.proto.HelloWorldProto.internal_static_helloworld_CommonResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tencent.logindemo.proto.HelloWorldProto.internal_static_helloworld_LoginResponse_fieldAccessorTable
+      return com.tencent.logindemo.proto.HelloWorldProto.internal_static_helloworld_CommonResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.tencent.logindemo.proto.LoginResponse.class, com.tencent.logindemo.proto.LoginResponse.Builder.class);
+              com.tencent.logindemo.proto.CommonResponse.class, com.tencent.logindemo.proto.CommonResponse.Builder.class);
     }
 
-    // Construct using com.tencent.logindemo.proto.LoginResponse.newBuilder()
+    // Construct using com.tencent.logindemo.proto.CommonResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -415,17 +415,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.tencent.logindemo.proto.HelloWorldProto.internal_static_helloworld_LoginResponse_descriptor;
+      return com.tencent.logindemo.proto.HelloWorldProto.internal_static_helloworld_CommonResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.tencent.logindemo.proto.LoginResponse getDefaultInstanceForType() {
-      return com.tencent.logindemo.proto.LoginResponse.getDefaultInstance();
+    public com.tencent.logindemo.proto.CommonResponse getDefaultInstanceForType() {
+      return com.tencent.logindemo.proto.CommonResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.tencent.logindemo.proto.LoginResponse build() {
-      com.tencent.logindemo.proto.LoginResponse result = buildPartial();
+    public com.tencent.logindemo.proto.CommonResponse build() {
+      com.tencent.logindemo.proto.CommonResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -433,8 +433,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.tencent.logindemo.proto.LoginResponse buildPartial() {
-      com.tencent.logindemo.proto.LoginResponse result = new com.tencent.logindemo.proto.LoginResponse(this);
+    public com.tencent.logindemo.proto.CommonResponse buildPartial() {
+      com.tencent.logindemo.proto.CommonResponse result = new com.tencent.logindemo.proto.CommonResponse(this);
       result.code_ = code_;
       result.message_ = message_;
       if (tokenInfoBuilder_ == null) {
@@ -480,16 +480,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.tencent.logindemo.proto.LoginResponse) {
-        return mergeFrom((com.tencent.logindemo.proto.LoginResponse)other);
+      if (other instanceof com.tencent.logindemo.proto.CommonResponse) {
+        return mergeFrom((com.tencent.logindemo.proto.CommonResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.tencent.logindemo.proto.LoginResponse other) {
-      if (other == com.tencent.logindemo.proto.LoginResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.tencent.logindemo.proto.CommonResponse other) {
+      if (other == com.tencent.logindemo.proto.CommonResponse.getDefaultInstance()) return this;
       if (other.getCode() != 0) {
         setCode(other.getCode());
       }
@@ -515,11 +515,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.tencent.logindemo.proto.LoginResponse parsedMessage = null;
+      com.tencent.logindemo.proto.CommonResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.tencent.logindemo.proto.LoginResponse) e.getUnfinishedMessage();
+        parsedMessage = (com.tencent.logindemo.proto.CommonResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -767,41 +767,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:helloworld.LoginResponse)
+    // @@protoc_insertion_point(builder_scope:helloworld.CommonResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:helloworld.LoginResponse)
-  private static final com.tencent.logindemo.proto.LoginResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:helloworld.CommonResponse)
+  private static final com.tencent.logindemo.proto.CommonResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.tencent.logindemo.proto.LoginResponse();
+    DEFAULT_INSTANCE = new com.tencent.logindemo.proto.CommonResponse();
   }
 
-  public static com.tencent.logindemo.proto.LoginResponse getDefaultInstance() {
+  public static com.tencent.logindemo.proto.CommonResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<LoginResponse>
-      PARSER = new com.google.protobuf.AbstractParser<LoginResponse>() {
+  private static final com.google.protobuf.Parser<CommonResponse>
+      PARSER = new com.google.protobuf.AbstractParser<CommonResponse>() {
     @java.lang.Override
-    public LoginResponse parsePartialFrom(
+    public CommonResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new LoginResponse(input, extensionRegistry);
+      return new CommonResponse(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<LoginResponse> parser() {
+  public static com.google.protobuf.Parser<CommonResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<LoginResponse> getParserForType() {
+  public com.google.protobuf.Parser<CommonResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.tencent.logindemo.proto.LoginResponse getDefaultInstanceForType() {
+  public com.tencent.logindemo.proto.CommonResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

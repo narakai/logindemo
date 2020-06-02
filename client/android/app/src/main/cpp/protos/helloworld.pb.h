@@ -47,7 +47,7 @@ struct TableStruct_helloworld_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -55,6 +55,9 @@ struct TableStruct_helloworld_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_helloworld_2eproto;
 namespace helloworld {
+class CommonResponse;
+class CommonResponseDefaultTypeInternal;
+extern CommonResponseDefaultTypeInternal _CommonResponse_default_instance_;
 class HelloReply;
 class HelloReplyDefaultTypeInternal;
 extern HelloReplyDefaultTypeInternal _HelloReply_default_instance_;
@@ -64,18 +67,19 @@ extern HelloRequestDefaultTypeInternal _HelloRequest_default_instance_;
 class LoginRequest;
 class LoginRequestDefaultTypeInternal;
 extern LoginRequestDefaultTypeInternal _LoginRequest_default_instance_;
-class LoginResponse;
-class LoginResponseDefaultTypeInternal;
-extern LoginResponseDefaultTypeInternal _LoginResponse_default_instance_;
+class RefreshTokenRequest;
+class RefreshTokenRequestDefaultTypeInternal;
+extern RefreshTokenRequestDefaultTypeInternal _RefreshTokenRequest_default_instance_;
 class TokenInfo;
 class TokenInfoDefaultTypeInternal;
 extern TokenInfoDefaultTypeInternal _TokenInfo_default_instance_;
 }  // namespace helloworld
 PROTOBUF_NAMESPACE_OPEN
+template<> ::helloworld::CommonResponse* Arena::CreateMaybeMessage<::helloworld::CommonResponse>(Arena*);
 template<> ::helloworld::HelloReply* Arena::CreateMaybeMessage<::helloworld::HelloReply>(Arena*);
 template<> ::helloworld::HelloRequest* Arena::CreateMaybeMessage<::helloworld::HelloRequest>(Arena*);
 template<> ::helloworld::LoginRequest* Arena::CreateMaybeMessage<::helloworld::LoginRequest>(Arena*);
-template<> ::helloworld::LoginResponse* Arena::CreateMaybeMessage<::helloworld::LoginResponse>(Arena*);
+template<> ::helloworld::RefreshTokenRequest* Arena::CreateMaybeMessage<::helloworld::RefreshTokenRequest>(Arena*);
 template<> ::helloworld::TokenInfo* Arena::CreateMaybeMessage<::helloworld::TokenInfo>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace helloworld {
@@ -253,23 +257,23 @@ class LoginRequest :
 };
 // -------------------------------------------------------------------
 
-class LoginResponse :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:helloworld.LoginResponse) */ {
+class CommonResponse :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:helloworld.CommonResponse) */ {
  public:
-  LoginResponse();
-  virtual ~LoginResponse();
+  CommonResponse();
+  virtual ~CommonResponse();
 
-  LoginResponse(const LoginResponse& from);
-  LoginResponse(LoginResponse&& from) noexcept
-    : LoginResponse() {
+  CommonResponse(const CommonResponse& from);
+  CommonResponse(CommonResponse&& from) noexcept
+    : CommonResponse() {
     *this = ::std::move(from);
   }
 
-  inline LoginResponse& operator=(const LoginResponse& from) {
+  inline CommonResponse& operator=(const CommonResponse& from) {
     CopyFrom(from);
     return *this;
   }
-  inline LoginResponse& operator=(LoginResponse&& from) noexcept {
+  inline CommonResponse& operator=(CommonResponse&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -287,37 +291,37 @@ class LoginResponse :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const LoginResponse& default_instance();
+  static const CommonResponse& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const LoginResponse* internal_default_instance() {
-    return reinterpret_cast<const LoginResponse*>(
-               &_LoginResponse_default_instance_);
+  static inline const CommonResponse* internal_default_instance() {
+    return reinterpret_cast<const CommonResponse*>(
+               &_CommonResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(LoginResponse& a, LoginResponse& b) {
+  friend void swap(CommonResponse& a, CommonResponse& b) {
     a.Swap(&b);
   }
-  inline void Swap(LoginResponse* other) {
+  inline void Swap(CommonResponse* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline LoginResponse* New() const final {
-    return CreateMaybeMessage<LoginResponse>(nullptr);
+  inline CommonResponse* New() const final {
+    return CreateMaybeMessage<CommonResponse>(nullptr);
   }
 
-  LoginResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<LoginResponse>(arena);
+  CommonResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<CommonResponse>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const LoginResponse& from);
-  void MergeFrom(const LoginResponse& from);
+  void CopyFrom(const CommonResponse& from);
+  void MergeFrom(const CommonResponse& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -331,10 +335,10 @@ class LoginResponse :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(LoginResponse* other);
+  void InternalSwap(CommonResponse* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "helloworld.LoginResponse";
+    return "helloworld.CommonResponse";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -403,7 +407,7 @@ class LoginResponse :
   void _internal_set_code(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:helloworld.LoginResponse)
+  // @@protoc_insertion_point(class_scope:helloworld.CommonResponse)
  private:
   class _Internal;
 
@@ -551,6 +555,159 @@ class TokenInfo :
 };
 // -------------------------------------------------------------------
 
+class RefreshTokenRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:helloworld.RefreshTokenRequest) */ {
+ public:
+  RefreshTokenRequest();
+  virtual ~RefreshTokenRequest();
+
+  RefreshTokenRequest(const RefreshTokenRequest& from);
+  RefreshTokenRequest(RefreshTokenRequest&& from) noexcept
+    : RefreshTokenRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RefreshTokenRequest& operator=(const RefreshTokenRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RefreshTokenRequest& operator=(RefreshTokenRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RefreshTokenRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RefreshTokenRequest* internal_default_instance() {
+    return reinterpret_cast<const RefreshTokenRequest*>(
+               &_RefreshTokenRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(RefreshTokenRequest& a, RefreshTokenRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RefreshTokenRequest* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RefreshTokenRequest* New() const final {
+    return CreateMaybeMessage<RefreshTokenRequest>(nullptr);
+  }
+
+  RefreshTokenRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RefreshTokenRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RefreshTokenRequest& from);
+  void MergeFrom(const RefreshTokenRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RefreshTokenRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "helloworld.RefreshTokenRequest";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_helloworld_2eproto);
+    return ::descriptor_table_helloworld_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDeviceFieldNumber = 1,
+    kTokenFieldNumber = 2,
+  };
+  // string device = 1;
+  void clear_device();
+  const std::string& device() const;
+  void set_device(const std::string& value);
+  void set_device(std::string&& value);
+  void set_device(const char* value);
+  void set_device(const char* value, size_t size);
+  std::string* mutable_device();
+  std::string* release_device();
+  void set_allocated_device(std::string* device);
+  private:
+  const std::string& _internal_device() const;
+  void _internal_set_device(const std::string& value);
+  std::string* _internal_mutable_device();
+  public:
+
+  // string token = 2;
+  void clear_token();
+  const std::string& token() const;
+  void set_token(const std::string& value);
+  void set_token(std::string&& value);
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  std::string* mutable_token();
+  std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
+  public:
+
+  // @@protoc_insertion_point(class_scope:helloworld.RefreshTokenRequest)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_helloworld_2eproto;
+};
+// -------------------------------------------------------------------
+
 class HelloRequest :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:helloworld.HelloRequest) */ {
  public:
@@ -593,7 +750,7 @@ class HelloRequest :
                &_HelloRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(HelloRequest& a, HelloRequest& b) {
     a.Swap(&b);
@@ -728,7 +885,7 @@ class HelloReply :
                &_HelloReply_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(HelloReply& a, HelloReply& b) {
     a.Swap(&b);
@@ -1012,118 +1169,118 @@ inline void LoginRequest::set_allocated_device(std::string* device) {
 
 // -------------------------------------------------------------------
 
-// LoginResponse
+// CommonResponse
 
 // int32 code = 1;
-inline void LoginResponse::clear_code() {
+inline void CommonResponse::clear_code() {
   code_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 LoginResponse::_internal_code() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 CommonResponse::_internal_code() const {
   return code_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 LoginResponse::code() const {
-  // @@protoc_insertion_point(field_get:helloworld.LoginResponse.code)
+inline ::PROTOBUF_NAMESPACE_ID::int32 CommonResponse::code() const {
+  // @@protoc_insertion_point(field_get:helloworld.CommonResponse.code)
   return _internal_code();
 }
-inline void LoginResponse::_internal_set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void CommonResponse::_internal_set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   code_ = value;
 }
-inline void LoginResponse::set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void CommonResponse::set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_code(value);
-  // @@protoc_insertion_point(field_set:helloworld.LoginResponse.code)
+  // @@protoc_insertion_point(field_set:helloworld.CommonResponse.code)
 }
 
 // string message = 2;
-inline void LoginResponse::clear_message() {
+inline void CommonResponse::clear_message() {
   message_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline const std::string& LoginResponse::message() const {
-  // @@protoc_insertion_point(field_get:helloworld.LoginResponse.message)
+inline const std::string& CommonResponse::message() const {
+  // @@protoc_insertion_point(field_get:helloworld.CommonResponse.message)
   return _internal_message();
 }
-inline void LoginResponse::set_message(const std::string& value) {
+inline void CommonResponse::set_message(const std::string& value) {
   _internal_set_message(value);
-  // @@protoc_insertion_point(field_set:helloworld.LoginResponse.message)
+  // @@protoc_insertion_point(field_set:helloworld.CommonResponse.message)
 }
-inline std::string* LoginResponse::mutable_message() {
-  // @@protoc_insertion_point(field_mutable:helloworld.LoginResponse.message)
+inline std::string* CommonResponse::mutable_message() {
+  // @@protoc_insertion_point(field_mutable:helloworld.CommonResponse.message)
   return _internal_mutable_message();
 }
-inline const std::string& LoginResponse::_internal_message() const {
+inline const std::string& CommonResponse::_internal_message() const {
   return message_.GetNoArena();
 }
-inline void LoginResponse::_internal_set_message(const std::string& value) {
+inline void CommonResponse::_internal_set_message(const std::string& value) {
   
   message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
 }
-inline void LoginResponse::set_message(std::string&& value) {
+inline void CommonResponse::set_message(std::string&& value) {
   
   message_.SetNoArena(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:helloworld.LoginResponse.message)
+  // @@protoc_insertion_point(field_set_rvalue:helloworld.CommonResponse.message)
 }
-inline void LoginResponse::set_message(const char* value) {
+inline void CommonResponse::set_message(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:helloworld.LoginResponse.message)
+  // @@protoc_insertion_point(field_set_char:helloworld.CommonResponse.message)
 }
-inline void LoginResponse::set_message(const char* value, size_t size) {
+inline void CommonResponse::set_message(const char* value, size_t size) {
   
   message_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:helloworld.LoginResponse.message)
+  // @@protoc_insertion_point(field_set_pointer:helloworld.CommonResponse.message)
 }
-inline std::string* LoginResponse::_internal_mutable_message() {
+inline std::string* CommonResponse::_internal_mutable_message() {
   
   return message_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline std::string* LoginResponse::release_message() {
-  // @@protoc_insertion_point(field_release:helloworld.LoginResponse.message)
+inline std::string* CommonResponse::release_message() {
+  // @@protoc_insertion_point(field_release:helloworld.CommonResponse.message)
   
   return message_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline void LoginResponse::set_allocated_message(std::string* message) {
+inline void CommonResponse::set_allocated_message(std::string* message) {
   if (message != nullptr) {
     
   } else {
     
   }
   message_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message);
-  // @@protoc_insertion_point(field_set_allocated:helloworld.LoginResponse.message)
+  // @@protoc_insertion_point(field_set_allocated:helloworld.CommonResponse.message)
 }
 
 // .helloworld.TokenInfo tokenInfo = 3;
-inline bool LoginResponse::_internal_has_tokeninfo() const {
+inline bool CommonResponse::_internal_has_tokeninfo() const {
   return this != internal_default_instance() && tokeninfo_ != nullptr;
 }
-inline bool LoginResponse::has_tokeninfo() const {
+inline bool CommonResponse::has_tokeninfo() const {
   return _internal_has_tokeninfo();
 }
-inline void LoginResponse::clear_tokeninfo() {
+inline void CommonResponse::clear_tokeninfo() {
   if (GetArenaNoVirtual() == nullptr && tokeninfo_ != nullptr) {
     delete tokeninfo_;
   }
   tokeninfo_ = nullptr;
 }
-inline const ::helloworld::TokenInfo& LoginResponse::_internal_tokeninfo() const {
+inline const ::helloworld::TokenInfo& CommonResponse::_internal_tokeninfo() const {
   const ::helloworld::TokenInfo* p = tokeninfo_;
   return p != nullptr ? *p : *reinterpret_cast<const ::helloworld::TokenInfo*>(
       &::helloworld::_TokenInfo_default_instance_);
 }
-inline const ::helloworld::TokenInfo& LoginResponse::tokeninfo() const {
-  // @@protoc_insertion_point(field_get:helloworld.LoginResponse.tokenInfo)
+inline const ::helloworld::TokenInfo& CommonResponse::tokeninfo() const {
+  // @@protoc_insertion_point(field_get:helloworld.CommonResponse.tokenInfo)
   return _internal_tokeninfo();
 }
-inline ::helloworld::TokenInfo* LoginResponse::release_tokeninfo() {
-  // @@protoc_insertion_point(field_release:helloworld.LoginResponse.tokenInfo)
+inline ::helloworld::TokenInfo* CommonResponse::release_tokeninfo() {
+  // @@protoc_insertion_point(field_release:helloworld.CommonResponse.tokenInfo)
   
   ::helloworld::TokenInfo* temp = tokeninfo_;
   tokeninfo_ = nullptr;
   return temp;
 }
-inline ::helloworld::TokenInfo* LoginResponse::_internal_mutable_tokeninfo() {
+inline ::helloworld::TokenInfo* CommonResponse::_internal_mutable_tokeninfo() {
   
   if (tokeninfo_ == nullptr) {
     auto* p = CreateMaybeMessage<::helloworld::TokenInfo>(GetArenaNoVirtual());
@@ -1131,11 +1288,11 @@ inline ::helloworld::TokenInfo* LoginResponse::_internal_mutable_tokeninfo() {
   }
   return tokeninfo_;
 }
-inline ::helloworld::TokenInfo* LoginResponse::mutable_tokeninfo() {
-  // @@protoc_insertion_point(field_mutable:helloworld.LoginResponse.tokenInfo)
+inline ::helloworld::TokenInfo* CommonResponse::mutable_tokeninfo() {
+  // @@protoc_insertion_point(field_mutable:helloworld.CommonResponse.tokenInfo)
   return _internal_mutable_tokeninfo();
 }
-inline void LoginResponse::set_allocated_tokeninfo(::helloworld::TokenInfo* tokeninfo) {
+inline void CommonResponse::set_allocated_tokeninfo(::helloworld::TokenInfo* tokeninfo) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete tokeninfo_;
@@ -1151,7 +1308,7 @@ inline void LoginResponse::set_allocated_tokeninfo(::helloworld::TokenInfo* toke
     
   }
   tokeninfo_ = tokeninfo;
-  // @@protoc_insertion_point(field_set_allocated:helloworld.LoginResponse.tokenInfo)
+  // @@protoc_insertion_point(field_set_allocated:helloworld.CommonResponse.tokenInfo)
 }
 
 // -------------------------------------------------------------------
@@ -1216,6 +1373,130 @@ inline void TokenInfo::set_allocated_token(std::string* token) {
   }
   token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
   // @@protoc_insertion_point(field_set_allocated:helloworld.TokenInfo.token)
+}
+
+// -------------------------------------------------------------------
+
+// RefreshTokenRequest
+
+// string device = 1;
+inline void RefreshTokenRequest::clear_device() {
+  device_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& RefreshTokenRequest::device() const {
+  // @@protoc_insertion_point(field_get:helloworld.RefreshTokenRequest.device)
+  return _internal_device();
+}
+inline void RefreshTokenRequest::set_device(const std::string& value) {
+  _internal_set_device(value);
+  // @@protoc_insertion_point(field_set:helloworld.RefreshTokenRequest.device)
+}
+inline std::string* RefreshTokenRequest::mutable_device() {
+  // @@protoc_insertion_point(field_mutable:helloworld.RefreshTokenRequest.device)
+  return _internal_mutable_device();
+}
+inline const std::string& RefreshTokenRequest::_internal_device() const {
+  return device_.GetNoArena();
+}
+inline void RefreshTokenRequest::_internal_set_device(const std::string& value) {
+  
+  device_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void RefreshTokenRequest::set_device(std::string&& value) {
+  
+  device_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:helloworld.RefreshTokenRequest.device)
+}
+inline void RefreshTokenRequest::set_device(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  device_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:helloworld.RefreshTokenRequest.device)
+}
+inline void RefreshTokenRequest::set_device(const char* value, size_t size) {
+  
+  device_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:helloworld.RefreshTokenRequest.device)
+}
+inline std::string* RefreshTokenRequest::_internal_mutable_device() {
+  
+  return device_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* RefreshTokenRequest::release_device() {
+  // @@protoc_insertion_point(field_release:helloworld.RefreshTokenRequest.device)
+  
+  return device_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void RefreshTokenRequest::set_allocated_device(std::string* device) {
+  if (device != nullptr) {
+    
+  } else {
+    
+  }
+  device_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), device);
+  // @@protoc_insertion_point(field_set_allocated:helloworld.RefreshTokenRequest.device)
+}
+
+// string token = 2;
+inline void RefreshTokenRequest::clear_token() {
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& RefreshTokenRequest::token() const {
+  // @@protoc_insertion_point(field_get:helloworld.RefreshTokenRequest.token)
+  return _internal_token();
+}
+inline void RefreshTokenRequest::set_token(const std::string& value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:helloworld.RefreshTokenRequest.token)
+}
+inline std::string* RefreshTokenRequest::mutable_token() {
+  // @@protoc_insertion_point(field_mutable:helloworld.RefreshTokenRequest.token)
+  return _internal_mutable_token();
+}
+inline const std::string& RefreshTokenRequest::_internal_token() const {
+  return token_.GetNoArena();
+}
+inline void RefreshTokenRequest::_internal_set_token(const std::string& value) {
+  
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void RefreshTokenRequest::set_token(std::string&& value) {
+  
+  token_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:helloworld.RefreshTokenRequest.token)
+}
+inline void RefreshTokenRequest::set_token(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:helloworld.RefreshTokenRequest.token)
+}
+inline void RefreshTokenRequest::set_token(const char* value, size_t size) {
+  
+  token_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:helloworld.RefreshTokenRequest.token)
+}
+inline std::string* RefreshTokenRequest::_internal_mutable_token() {
+  
+  return token_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* RefreshTokenRequest::release_token() {
+  // @@protoc_insertion_point(field_release:helloworld.RefreshTokenRequest.token)
+  
+  return token_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void RefreshTokenRequest::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
+    
+  } else {
+    
+  }
+  token_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:helloworld.RefreshTokenRequest.token)
 }
 
 // -------------------------------------------------------------------
@@ -1349,6 +1630,8 @@ inline void HelloReply::set_allocated_message(std::string* message) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

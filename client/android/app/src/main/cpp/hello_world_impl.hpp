@@ -19,7 +19,7 @@ namespace logindemo {
 
         CommonReponse logout(const std::string & token);
 
-        CommonReponse refreshToken(const std::string & token);
+        CommonReponse refreshToken(const std::string & token, const std::string & device);
 
         std::string sayHello(const std::string & msg);
 

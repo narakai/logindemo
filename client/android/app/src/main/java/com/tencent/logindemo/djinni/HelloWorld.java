@@ -12,7 +12,7 @@ public abstract class HelloWorld {
 
     public abstract CommonReponse logout(String token);
 
-    public abstract CommonReponse refreshToken(String token);
+    public abstract CommonReponse refreshToken(String token, String device);
 
     public abstract String sayHello(String msg);
 
@@ -70,12 +70,12 @@ public abstract class HelloWorld {
         private native CommonReponse native_logout(long _nativeRef, String token);
 
         @Override
-        public CommonReponse refreshToken(String token)
+        public CommonReponse refreshToken(String token, String device)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_refreshToken(this.nativeRef, token);
+            return native_refreshToken(this.nativeRef, token, device);
         }
-        private native CommonReponse native_refreshToken(long _nativeRef, String token);
+        private native CommonReponse native_refreshToken(long _nativeRef, String token, String device);
 
         @Override
         public String sayHello(String msg)

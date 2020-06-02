@@ -11,13 +11,13 @@ service Greeter {
   
   rpc SayHello (HelloRequest) returns (HelloReply) {}
 
-  rpc Signup (LoginRequest) returns (LoginResponse) {}
+  rpc Signup (LoginRequest) returns (CommonResponse) {}
 
-  rpc Login (LoginRequest) returns (LoginResponse) {}
+  rpc Login (LoginRequest) returns (CommonResponse) {}
 
-  rpc Logout (TokenInfo) returns (LoginResponse) {}
+  rpc Logout (TokenInfo) returns (CommonResponse) {}
 
-  rpc RefreshToken (TokenInfo) returns (LoginResponse) {}
+  rpc RefreshToken (RefreshTokenRequest) returns (CommonResponse) {}
 
 }
 
@@ -27,7 +27,7 @@ message LoginRequest {
   string device = 3;
 }
 
-message LoginResponse {
+message CommonResponse {
   int32 code = 1;
   string message = 2;
   TokenInfo tokenInfo = 3;
@@ -35,6 +35,11 @@ message LoginResponse {
 
 message TokenInfo {
   string token = 1;
+}
+
+message RefreshTokenRequest {
+  string device = 1;
+  string token = 2;
 }
 
 message HelloRequest {

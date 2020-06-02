@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             Log.i(TAG, "refreshToken, token:${token}")
 
             lifecycleScope.launch(Dispatchers.Main) {
-                val response = refreshTokenInBackground(token)
+                val response = refreshTokenInBackground(token, device)
                 Log.i(TAG, "refreshToken, response:${response}")
                 if (response.code == 0) {
                     token = response.data
@@ -103,9 +103,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun refreshTokenInBackground(token: String?): CommonReponse {
+    private suspend fun refreshTokenInBackground(token: String?, device: String?): CommonReponse {
         return withContext(Dispatchers.Default) {
-            service.refreshToken(token)
+            service.refreshToken(token, device)
         }
     }
 

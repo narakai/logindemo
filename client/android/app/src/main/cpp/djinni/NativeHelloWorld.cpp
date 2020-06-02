@@ -64,12 +64,13 @@ CJNIEXPORT jobject JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024Cpp
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT jobject JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_native_1refreshToken(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_token)
+CJNIEXPORT jobject JNICALL Java_com_tencent_logindemo_djinni_HelloWorld_00024CppProxy_native_1refreshToken(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_token, jstring j_device)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
         const auto& ref = ::djinni::objectFromHandleAddress<::logindemo::HelloWorld>(nativeRef);
-        auto r = ref->refreshToken(::djinni::String::toCpp(jniEnv, j_token));
+        auto r = ref->refreshToken(::djinni::String::toCpp(jniEnv, j_token),
+                                   ::djinni::String::toCpp(jniEnv, j_device));
         return ::djinni::release(::djinni_generated::NativeCommonReponse::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }

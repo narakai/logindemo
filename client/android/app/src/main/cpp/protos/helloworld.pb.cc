@@ -20,14 +20,18 @@ class LoginRequestDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<LoginRequest> _instance;
 } _LoginRequest_default_instance_;
-class LoginResponseDefaultTypeInternal {
+class CommonResponseDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<LoginResponse> _instance;
-} _LoginResponse_default_instance_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CommonResponse> _instance;
+} _CommonResponse_default_instance_;
 class TokenInfoDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TokenInfo> _instance;
 } _TokenInfo_default_instance_;
+class RefreshTokenRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RefreshTokenRequest> _instance;
+} _RefreshTokenRequest_default_instance_;
 class HelloRequestDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<HelloRequest> _instance;
@@ -37,6 +41,21 @@ class HelloReplyDefaultTypeInternal {
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<HelloReply> _instance;
 } _HelloReply_default_instance_;
 }  // namespace helloworld
+static void InitDefaultsscc_info_CommonResponse_helloworld_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::helloworld::_CommonResponse_default_instance_;
+    new (ptr) ::helloworld::CommonResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::helloworld::CommonResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CommonResponse_helloworld_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_CommonResponse_helloworld_2eproto}, {
+      &scc_info_TokenInfo_helloworld_2eproto.base,}};
+
 static void InitDefaultsscc_info_HelloReply_helloworld_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -79,20 +98,19 @@ static void InitDefaultsscc_info_LoginRequest_helloworld_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_LoginRequest_helloworld_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_LoginRequest_helloworld_2eproto}, {}};
 
-static void InitDefaultsscc_info_LoginResponse_helloworld_2eproto() {
+static void InitDefaultsscc_info_RefreshTokenRequest_helloworld_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::helloworld::_LoginResponse_default_instance_;
-    new (ptr) ::helloworld::LoginResponse();
+    void* ptr = &::helloworld::_RefreshTokenRequest_default_instance_;
+    new (ptr) ::helloworld::RefreshTokenRequest();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::helloworld::LoginResponse::InitAsDefaultInstance();
+  ::helloworld::RefreshTokenRequest::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_LoginResponse_helloworld_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_LoginResponse_helloworld_2eproto}, {
-      &scc_info_TokenInfo_helloworld_2eproto.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RefreshTokenRequest_helloworld_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RefreshTokenRequest_helloworld_2eproto}, {}};
 
 static void InitDefaultsscc_info_TokenInfo_helloworld_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -108,7 +126,7 @@ static void InitDefaultsscc_info_TokenInfo_helloworld_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TokenInfo_helloworld_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_TokenInfo_helloworld_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_helloworld_2eproto[5];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_helloworld_2eproto[6];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_helloworld_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_helloworld_2eproto = nullptr;
 
@@ -122,19 +140,26 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_helloworld_2eproto::offsets[] 
   PROTOBUF_FIELD_OFFSET(::helloworld::LoginRequest, password_),
   PROTOBUF_FIELD_OFFSET(::helloworld::LoginRequest, device_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::helloworld::LoginResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::helloworld::CommonResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::helloworld::LoginResponse, code_),
-  PROTOBUF_FIELD_OFFSET(::helloworld::LoginResponse, message_),
-  PROTOBUF_FIELD_OFFSET(::helloworld::LoginResponse, tokeninfo_),
+  PROTOBUF_FIELD_OFFSET(::helloworld::CommonResponse, code_),
+  PROTOBUF_FIELD_OFFSET(::helloworld::CommonResponse, message_),
+  PROTOBUF_FIELD_OFFSET(::helloworld::CommonResponse, tokeninfo_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::helloworld::TokenInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::helloworld::TokenInfo, token_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::helloworld::RefreshTokenRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::helloworld::RefreshTokenRequest, device_),
+  PROTOBUF_FIELD_OFFSET(::helloworld::RefreshTokenRequest, token_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::helloworld::HelloRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -150,16 +175,18 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_helloworld_2eproto::offsets[] 
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::helloworld::LoginRequest)},
-  { 8, -1, sizeof(::helloworld::LoginResponse)},
+  { 8, -1, sizeof(::helloworld::CommonResponse)},
   { 16, -1, sizeof(::helloworld::TokenInfo)},
-  { 22, -1, sizeof(::helloworld::HelloRequest)},
-  { 28, -1, sizeof(::helloworld::HelloReply)},
+  { 22, -1, sizeof(::helloworld::RefreshTokenRequest)},
+  { 29, -1, sizeof(::helloworld::HelloRequest)},
+  { 35, -1, sizeof(::helloworld::HelloReply)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_LoginRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_LoginResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_CommonResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_TokenInfo_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_RefreshTokenRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_HelloRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_HelloReply_default_instance_),
 };
@@ -167,38 +194,41 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_helloworld_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\020helloworld.proto\022\nhelloworld\">\n\014LoginR"
   "equest\022\014\n\004name\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\016"
-  "\n\006device\030\003 \001(\t\"X\n\rLoginResponse\022\014\n\004code\030"
-  "\001 \001(\005\022\017\n\007message\030\002 \001(\t\022(\n\ttokenInfo\030\003 \001("
-  "\0132\025.helloworld.TokenInfo\"\032\n\tTokenInfo\022\r\n"
-  "\005token\030\001 \001(\t\"\034\n\014HelloRequest\022\014\n\004name\030\001 \001"
-  "(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001(\t2\314\002\n\007Gr"
-  "eeter\022>\n\010SayHello\022\030.helloworld.HelloRequ"
-  "est\032\026.helloworld.HelloReply\"\000\022\?\n\006Signup\022"
-  "\030.helloworld.LoginRequest\032\031.helloworld.L"
-  "oginResponse\"\000\022>\n\005Login\022\030.helloworld.Log"
-  "inRequest\032\031.helloworld.LoginResponse\"\000\022<"
-  "\n\006Logout\022\025.helloworld.TokenInfo\032\031.hellow"
-  "orld.LoginResponse\"\000\022B\n\014RefreshToken\022\025.h"
-  "elloworld.TokenInfo\032\031.helloworld.LoginRe"
-  "sponse\"\000B0\n\033com.tencent.logindemo.protoB"
-  "\017HelloWorldProtoP\001b\006proto3"
+  "\n\006device\030\003 \001(\t\"Y\n\016CommonResponse\022\014\n\004code"
+  "\030\001 \001(\005\022\017\n\007message\030\002 \001(\t\022(\n\ttokenInfo\030\003 \001"
+  "(\0132\025.helloworld.TokenInfo\"\032\n\tTokenInfo\022\r"
+  "\n\005token\030\001 \001(\t\"4\n\023RefreshTokenRequest\022\016\n\006"
+  "device\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\"\034\n\014HelloRequ"
+  "est\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007messa"
+  "ge\030\001 \001(\t2\332\002\n\007Greeter\022>\n\010SayHello\022\030.hello"
+  "world.HelloRequest\032\026.helloworld.HelloRep"
+  "ly\"\000\022@\n\006Signup\022\030.helloworld.LoginRequest"
+  "\032\032.helloworld.CommonResponse\"\000\022\?\n\005Login\022"
+  "\030.helloworld.LoginRequest\032\032.helloworld.C"
+  "ommonResponse\"\000\022=\n\006Logout\022\025.helloworld.T"
+  "okenInfo\032\032.helloworld.CommonResponse\"\000\022M"
+  "\n\014RefreshToken\022\037.helloworld.RefreshToken"
+  "Request\032\032.helloworld.CommonResponse\"\000B0\n"
+  "\033com.tencent.logindemo.protoB\017HelloWorld"
+  "ProtoP\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_helloworld_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_helloworld_2eproto_sccs[5] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_helloworld_2eproto_sccs[6] = {
+  &scc_info_CommonResponse_helloworld_2eproto.base,
   &scc_info_HelloReply_helloworld_2eproto.base,
   &scc_info_HelloRequest_helloworld_2eproto.base,
   &scc_info_LoginRequest_helloworld_2eproto.base,
-  &scc_info_LoginResponse_helloworld_2eproto.base,
+  &scc_info_RefreshTokenRequest_helloworld_2eproto.base,
   &scc_info_TokenInfo_helloworld_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_helloworld_2eproto_once;
 static bool descriptor_table_helloworld_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_helloworld_2eproto = {
-  &descriptor_table_helloworld_2eproto_initialized, descriptor_table_protodef_helloworld_2eproto, "helloworld.proto", 666,
-  &descriptor_table_helloworld_2eproto_once, descriptor_table_helloworld_2eproto_sccs, descriptor_table_helloworld_2eproto_deps, 5, 0,
+  &descriptor_table_helloworld_2eproto_initialized, descriptor_table_protodef_helloworld_2eproto, "helloworld.proto", 735,
+  &descriptor_table_helloworld_2eproto_once, descriptor_table_helloworld_2eproto_sccs, descriptor_table_helloworld_2eproto_deps, 6, 0,
   schemas, file_default_instances, TableStruct_helloworld_2eproto::offsets,
-  file_level_metadata_helloworld_2eproto, 5, file_level_enum_descriptors_helloworld_2eproto, file_level_service_descriptors_helloworld_2eproto,
+  file_level_metadata_helloworld_2eproto, 6, file_level_enum_descriptors_helloworld_2eproto, file_level_service_descriptors_helloworld_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -484,25 +514,25 @@ void LoginRequest::InternalSwap(LoginRequest* other) {
 
 // ===================================================================
 
-void LoginResponse::InitAsDefaultInstance() {
-  ::helloworld::_LoginResponse_default_instance_._instance.get_mutable()->tokeninfo_ = const_cast< ::helloworld::TokenInfo*>(
+void CommonResponse::InitAsDefaultInstance() {
+  ::helloworld::_CommonResponse_default_instance_._instance.get_mutable()->tokeninfo_ = const_cast< ::helloworld::TokenInfo*>(
       ::helloworld::TokenInfo::internal_default_instance());
 }
-class LoginResponse::_Internal {
+class CommonResponse::_Internal {
  public:
-  static const ::helloworld::TokenInfo& tokeninfo(const LoginResponse* msg);
+  static const ::helloworld::TokenInfo& tokeninfo(const CommonResponse* msg);
 };
 
 const ::helloworld::TokenInfo&
-LoginResponse::_Internal::tokeninfo(const LoginResponse* msg) {
+CommonResponse::_Internal::tokeninfo(const CommonResponse* msg) {
   return *msg->tokeninfo_;
 }
-LoginResponse::LoginResponse()
+CommonResponse::CommonResponse()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:helloworld.LoginResponse)
+  // @@protoc_insertion_point(constructor:helloworld.CommonResponse)
 }
-LoginResponse::LoginResponse(const LoginResponse& from)
+CommonResponse::CommonResponse(const CommonResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
@@ -516,38 +546,38 @@ LoginResponse::LoginResponse(const LoginResponse& from)
     tokeninfo_ = nullptr;
   }
   code_ = from.code_;
-  // @@protoc_insertion_point(copy_constructor:helloworld.LoginResponse)
+  // @@protoc_insertion_point(copy_constructor:helloworld.CommonResponse)
 }
 
-void LoginResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_LoginResponse_helloworld_2eproto.base);
+void CommonResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CommonResponse_helloworld_2eproto.base);
   message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&tokeninfo_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&code_) -
       reinterpret_cast<char*>(&tokeninfo_)) + sizeof(code_));
 }
 
-LoginResponse::~LoginResponse() {
-  // @@protoc_insertion_point(destructor:helloworld.LoginResponse)
+CommonResponse::~CommonResponse() {
+  // @@protoc_insertion_point(destructor:helloworld.CommonResponse)
   SharedDtor();
 }
 
-void LoginResponse::SharedDtor() {
+void CommonResponse::SharedDtor() {
   message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete tokeninfo_;
 }
 
-void LoginResponse::SetCachedSize(int size) const {
+void CommonResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const LoginResponse& LoginResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_LoginResponse_helloworld_2eproto.base);
+const CommonResponse& CommonResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CommonResponse_helloworld_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void LoginResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:helloworld.LoginResponse)
+void CommonResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:helloworld.CommonResponse)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -561,7 +591,7 @@ void LoginResponse::Clear() {
   _internal_metadata_.Clear();
 }
 
-const char* LoginResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CommonResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
@@ -580,7 +610,7 @@ const char* LoginResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_message();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "helloworld.LoginResponse.message"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "helloworld.CommonResponse.message"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -611,9 +641,9 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* LoginResponse::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* CommonResponse::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:helloworld.LoginResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:helloworld.CommonResponse)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -628,7 +658,7 @@ failure:
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "helloworld.LoginResponse.message");
+      "helloworld.CommonResponse.message");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_message(), target);
   }
@@ -645,12 +675,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:helloworld.LoginResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:helloworld.CommonResponse)
   return target;
 }
 
-size_t LoginResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:helloworld.LoginResponse)
+size_t CommonResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:helloworld.CommonResponse)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -687,23 +717,23 @@ size_t LoginResponse::ByteSizeLong() const {
   return total_size;
 }
 
-void LoginResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:helloworld.LoginResponse)
+void CommonResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:helloworld.CommonResponse)
   GOOGLE_DCHECK_NE(&from, this);
-  const LoginResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<LoginResponse>(
+  const CommonResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CommonResponse>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:helloworld.LoginResponse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:helloworld.CommonResponse)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:helloworld.LoginResponse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:helloworld.CommonResponse)
     MergeFrom(*source);
   }
 }
 
-void LoginResponse::MergeFrom(const LoginResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:helloworld.LoginResponse)
+void CommonResponse::MergeFrom(const CommonResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:helloworld.CommonResponse)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -721,25 +751,25 @@ void LoginResponse::MergeFrom(const LoginResponse& from) {
   }
 }
 
-void LoginResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:helloworld.LoginResponse)
+void CommonResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:helloworld.CommonResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void LoginResponse::CopyFrom(const LoginResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:helloworld.LoginResponse)
+void CommonResponse::CopyFrom(const CommonResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:helloworld.CommonResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool LoginResponse::IsInitialized() const {
+bool CommonResponse::IsInitialized() const {
   return true;
 }
 
-void LoginResponse::InternalSwap(LoginResponse* other) {
+void CommonResponse::InternalSwap(CommonResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   message_.Swap(&other->message_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
@@ -748,7 +778,7 @@ void LoginResponse::InternalSwap(LoginResponse* other) {
   swap(code_, other->code_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata LoginResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata CommonResponse::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -948,6 +978,244 @@ void TokenInfo::InternalSwap(TokenInfo* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TokenInfo::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void RefreshTokenRequest::InitAsDefaultInstance() {
+}
+class RefreshTokenRequest::_Internal {
+ public:
+};
+
+RefreshTokenRequest::RefreshTokenRequest()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:helloworld.RefreshTokenRequest)
+}
+RefreshTokenRequest::RefreshTokenRequest(const RefreshTokenRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  device_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_device().empty()) {
+    device_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.device_);
+  }
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_token().empty()) {
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
+  // @@protoc_insertion_point(copy_constructor:helloworld.RefreshTokenRequest)
+}
+
+void RefreshTokenRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RefreshTokenRequest_helloworld_2eproto.base);
+  device_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+RefreshTokenRequest::~RefreshTokenRequest() {
+  // @@protoc_insertion_point(destructor:helloworld.RefreshTokenRequest)
+  SharedDtor();
+}
+
+void RefreshTokenRequest::SharedDtor() {
+  device_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void RefreshTokenRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const RefreshTokenRequest& RefreshTokenRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RefreshTokenRequest_helloworld_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void RefreshTokenRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:helloworld.RefreshTokenRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  device_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  token_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+const char* RefreshTokenRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string device = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_device();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "helloworld.RefreshTokenRequest.device"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string token = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_token();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "helloworld.RefreshTokenRequest.token"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* RefreshTokenRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:helloworld.RefreshTokenRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string device = 1;
+  if (this->device().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_device().data(), static_cast<int>(this->_internal_device().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "helloworld.RefreshTokenRequest.device");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_device(), target);
+  }
+
+  // string token = 2;
+  if (this->token().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "helloworld.RefreshTokenRequest.token");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_token(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:helloworld.RefreshTokenRequest)
+  return target;
+}
+
+size_t RefreshTokenRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:helloworld.RefreshTokenRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string device = 1;
+  if (this->device().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_device());
+  }
+
+  // string token = 2;
+  if (this->token().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void RefreshTokenRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:helloworld.RefreshTokenRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const RefreshTokenRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RefreshTokenRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:helloworld.RefreshTokenRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:helloworld.RefreshTokenRequest)
+    MergeFrom(*source);
+  }
+}
+
+void RefreshTokenRequest::MergeFrom(const RefreshTokenRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:helloworld.RefreshTokenRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.device().size() > 0) {
+
+    device_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.device_);
+  }
+  if (from.token().size() > 0) {
+
+    token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
+}
+
+void RefreshTokenRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:helloworld.RefreshTokenRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RefreshTokenRequest::CopyFrom(const RefreshTokenRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:helloworld.RefreshTokenRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RefreshTokenRequest::IsInitialized() const {
+  return true;
+}
+
+void RefreshTokenRequest::InternalSwap(RefreshTokenRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  device_.Swap(&other->device_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RefreshTokenRequest::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -1356,11 +1624,14 @@ PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::helloworld::LoginRequest* Arena::CreateMaybeMessage< ::helloworld::LoginRequest >(Arena* arena) {
   return Arena::CreateInternal< ::helloworld::LoginRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::helloworld::LoginResponse* Arena::CreateMaybeMessage< ::helloworld::LoginResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::helloworld::LoginResponse >(arena);
+template<> PROTOBUF_NOINLINE ::helloworld::CommonResponse* Arena::CreateMaybeMessage< ::helloworld::CommonResponse >(Arena* arena) {
+  return Arena::CreateInternal< ::helloworld::CommonResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::helloworld::TokenInfo* Arena::CreateMaybeMessage< ::helloworld::TokenInfo >(Arena* arena) {
   return Arena::CreateInternal< ::helloworld::TokenInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::helloworld::RefreshTokenRequest* Arena::CreateMaybeMessage< ::helloworld::RefreshTokenRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::helloworld::RefreshTokenRequest >(arena);
 }
 template<> PROTOBUF_NOINLINE ::helloworld::HelloRequest* Arena::CreateMaybeMessage< ::helloworld::HelloRequest >(Arena* arena) {
   return Arena::CreateInternal< ::helloworld::HelloRequest >(arena);

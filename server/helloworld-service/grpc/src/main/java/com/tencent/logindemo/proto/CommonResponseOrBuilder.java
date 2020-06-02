@@ -3,8 +3,8 @@
 
 package com.tencent.logindemo.proto;
 
-public interface LoginResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:helloworld.LoginResponse)
+public interface CommonResponseOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:helloworld.CommonResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

@@ -20,7 +20,7 @@ public class DataBaseHelper {
     private static final String USER = "root";
     private static final String PASS = "root";
     private static final String DATABASE = "logindemo";
-    private static final String DB_URL = "jdbc:mysql://localhost:" + PORT + "/" + DATABASE + "?useUnicode=true&characterEncoding=UTF-8";
+    private static final String DB_URL = String.format("jdbc:mysql://localhost:%s/%s?useUnicode=true&characterEncoding=UTF-8", PORT, DATABASE);
 
     private Connection connection = null;
     private Statement statement = null;
@@ -186,9 +186,9 @@ public class DataBaseHelper {
     }
 
     /**
-     * 判断token是否有效
+     * 判断token是否有效，如果status=0或者device不一致都说明token失效了
      */
-    public boolean isTokenValid(String token) {
+    public boolean isTokenValid(String token, String device) {
         try {
             String sql = "SELECT * FROM token WHERE token='" + token + "'";
             logger.info("isTokenValid executeSql: " + sql);
@@ -199,7 +199,12 @@ public class DataBaseHelper {
                     logger.info("isTokenValid status invalid");
                     return false;
                 }
-                //TODO: 判断device信息
+
+                String savedDevice = rs.getString("device");
+                if (null == savedDevice || !savedDevice.equalsIgnoreCase(device)) {
+                    logger.info("isTokenValid device incorrect");
+                    return false;
+                }
                 return true;
             }
         } catch (SQLException ex) {
