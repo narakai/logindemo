@@ -14,15 +14,15 @@ public class Utils {
 
     /**
      * 生成token
-     * TODO：这里简单处理用token#name#加上当前时间戳
+     * TODO：这里用token#name#加上当前时间戳组成字符串然后md5加密
      */
     public static String generateToken(String name) {
-        return "token#" + name + "#" + System.nanoTime();
+        return md5("token#" + name + "#" + System.nanoTime());
     }
 
     /**
      * 生成salt
-     * TODO：这里简单处理，生成一个长度为16的随机字符串
+     * TODO：这里简单处理，生成一个长度为16的随机字符串，字符是0-F
      */
     public static String generateSalt() {
         Random random = new Random();
