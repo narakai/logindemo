@@ -15,10 +15,12 @@ import java.util.logging.Logger;
 public class DataBaseHelper {
 
     private static final Logger logger = Logger.getLogger(HelloWorldServer.class.getName());
-    private final String DB_URL = "jdbc:mysql://localhost:3306/logindemo?useUnicode=true&characterEncoding=UTF-8";
 
+    private static final int PORT = 3306;
     private static final String USER = "root";
     private static final String PASS = "root";
+    private static final String DATABASE = "logindemo";
+    private static final String DB_URL = "jdbc:mysql://localhost:" + PORT + "/" + DATABASE + "?useUnicode=true&characterEncoding=UTF-8";
 
     private Connection connection = null;
     private Statement statement = null;
@@ -60,7 +62,9 @@ public class DataBaseHelper {
             String sql = "SELECT * FROM user WHERE name='" + name + "'";
             logger.info("isUserExist executeSql: " + sql);
             ResultSet rs = statement.executeQuery(sql);
-            return rs.next();
+            boolean result = rs.next();
+            rs.close();
+            return result;
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "isUserExist fail", ex);
         }
@@ -75,7 +79,9 @@ public class DataBaseHelper {
             String sql = "SELECT * FROM token WHERE userName='" + name + "'";
             logger.info("isTokenExistByUserName executeSql: " + sql);
             ResultSet rs = statement.executeQuery(sql);
-            return rs.next();
+            boolean result = rs.next();
+            rs.close();
+            return result;
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "isTokenExistByUserName fail", ex);
         }
@@ -90,7 +96,9 @@ public class DataBaseHelper {
             String sql = "SELECT * FROM token WHERE token='" + token + "'";
             logger.info("isTokenExistByToken executeSql: " + sql);
             ResultSet rs = statement.executeQuery(sql);
-            return rs.next();
+            boolean result = rs.next();
+            rs.close();
+            return result;
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "isTokenExistByToken fail", ex);
         }
@@ -110,7 +118,10 @@ public class DataBaseHelper {
                 String sql2 = "SELECT name FROM user WHERE name='" + name + "' and password='" + password + "'";
                 logger.info("isPasswordCorrect executeSql: " + sql);
                 ResultSet rs2 = statement.executeQuery(sql2);
-                return rs2.next();
+                boolean result = rs2.next();
+                rs2.close();
+                rs.close();
+                return result;
             }
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "isPasswordCorrect fail", ex);
@@ -185,10 +196,11 @@ public class DataBaseHelper {
             if (rs.next()) {
                 int status = rs.getInt("status");
                 if (status == 0) {
+                    logger.info("isTokenValid status invalid");
                     return false;
                 }
-
                 //TODO: 判断device信息
+                return true;
             }
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "isTokenValid fail", ex);
@@ -196,20 +208,4 @@ public class DataBaseHelper {
         return false;
     }
 
-    public void test() {
-        try {
-            String sql;
-            sql = "SELECT * FROM table_name";
-            ResultSet rs = statement.executeQuery(sql); // DML
-            // stmt.executeUpdate(sql); // DDL
-
-            while (rs.next()) {
-                System.out.print(rs.getString(1));
-                System.out.print(rs.getString(2));
-            }
-            rs.close();
-        } catch (SQLException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        }
-    }
 }

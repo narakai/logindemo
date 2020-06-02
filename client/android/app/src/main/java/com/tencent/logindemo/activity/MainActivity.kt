@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
 
-        val TAG = "MainActivity"
-        val HOST = "111.229.210.33" //腾讯云服务器IP地址
-        val PORT = 50051 //grpc server监听端口
+        const val TAG = "MainActivity"
+        const val HOST = "111.229.210.33" //腾讯云服务器IP地址
+        const val PORT = 50051 //grpc server监听端口
 
         init {
             System.loadLibrary("native-lib")
@@ -37,15 +37,15 @@ class MainActivity : AppCompatActivity() {
     lateinit var service: HelloWorld
 
     /**
-     * 1、用户登录成功之后服务器返回给客户端的凭证token
-     * 2、当检测到token与服务器端保存的不一致时我们需要让用户重新登录
+     * 1、用户注册成功或者登录成功之后服务器返回给客户端的凭证token
+     * 2、当检测到token与服务器端保存的信息不一致时我们需要让用户重新登录
      * 3、TODO：token可以设计的更加复杂，声明token有效期，客户端检测到token有效期过了的话也需要让用户重新登录
      */
     var token: String? = null
 
     /**
      * 1、设备id，用于标识某个设备
-     * 2、TODO：设备id跟当前设备的很多信息有关，例如机型、系统版本、序列号等等，这里直接使用ANDROID_ID标识
+     * 2、TODO：设备id跟当前设备的很多信息有关，例如系统平台、手机机型、系统版本、序列号等等，这里直接使用ANDROID_ID标识
      */
     lateinit var device: String
 
@@ -81,26 +81,21 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "refreshToken, response:${response}")
                 if (response.code == 0) {
                     token = response.data
-                    if (token.isNullOrEmpty()) {
-                        clearToken(token)
-                    } else {
-                        saveToke(token)
-                    }
+                    saveToke(token)
                     showToken(token)
                     Log.i(
                         TAG,
                         "refreshToken success(${response.code}, ${response.msg}), token:${token}"
                     )
-                    Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT).show()
                 } else {
                     Log.e(TAG, "refreshToken fail(${response.code}, ${response.msg})")
                     token = null
-                    clearToken(token)
+                    saveToke(token)
                     showToken(token)
                     Toast.makeText(
                         applicationContext,
-                        "token已失效，请重新登录",
+                        "token失效，请重新登录",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -108,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    suspend fun refreshTokenInBackground(token: String?): CommonReponse {
+    private suspend fun refreshTokenInBackground(token: String?): CommonReponse {
         return withContext(Dispatchers.Default) {
             service.refreshToken(token)
         }
@@ -124,7 +119,7 @@ class MainActivity : AppCompatActivity() {
         val nameText = dialogLayout.findViewById<EditText>(R.id.nameText)
         val passwordText = dialogLayout.findViewById<EditText>(R.id.passwordText)
         builder.setView(dialogLayout)
-        builder.setPositiveButton("注册") { dialogInterface, which ->
+        builder.setPositiveButton("注册") { _, _ ->
             val name = nameText.text.toString()
             val password = passwordText.text.toString()
             if (validNamePassword(name, password)) {
@@ -134,12 +129,11 @@ class MainActivity : AppCompatActivity() {
                     val response = signupInBackground(name, password, device)
                     Log.i(TAG, "signup, response:${response}")
                     if (response.code == 0) {
-                        Log.e(TAG, "signup success(${response.code}, ${response.msg})")
-                        Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT)
-                            .show() //"注册成功"
+                        Log.i(TAG, "signup success(${response.code}, ${response.msg})")
                         token = response.data
                         saveToke(token)
                         showToken(token)
+                        Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT).show()
                     } else {
                         Log.e(TAG, "signup fail(${response.code}, ${response.msg})")
                         Toast.makeText(
@@ -156,7 +150,7 @@ class MainActivity : AppCompatActivity() {
         builder.show()
     }
 
-    suspend fun signupInBackground(
+    private suspend fun signupInBackground(
         name: String?,
         password: String?,
         device: String?
@@ -176,7 +170,7 @@ class MainActivity : AppCompatActivity() {
         val nameText = dialogLayout.findViewById<EditText>(R.id.nameText)
         val passwordText = dialogLayout.findViewById<EditText>(R.id.passwordText)
         builder.setView(dialogLayout)
-        builder.setPositiveButton("登录") { dialogInterface, which ->
+        builder.setPositiveButton("登录") { _, _ ->
             val name = nameText.text.toString()
             val password = passwordText.text.toString()
             if (validNamePassword(name, password)) {
@@ -186,12 +180,11 @@ class MainActivity : AppCompatActivity() {
                     val response = loginInBackground(name, password, device)
                     Log.i(TAG, "login, response:${response}")
                     if (response.code == 0) {
-                        Log.e(TAG, "login success(${response.code}, ${response.msg})")
-                        Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT)
-                            .show() //"登录成功"
+                        Log.i(TAG, "login success(${response.code}, ${response.msg})")
                         token = response.data
                         saveToke(token)
                         showToken(token)
+                        Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT).show()
                     } else {
                         Log.e(TAG, "login fail(${response.code}, ${response.msg})")
                         Toast.makeText(
@@ -208,7 +201,7 @@ class MainActivity : AppCompatActivity() {
         builder.show()
     }
 
-    suspend fun loginInBackground(
+    private suspend fun loginInBackground(
         name: String?,
         password: String?,
         device: String?
@@ -231,12 +224,11 @@ class MainActivity : AppCompatActivity() {
                 val response = logoutInBackground(token)
                 Log.i(TAG, "logout, response:${response}")
                 if (response.code == 0) {
-                    Log.e(TAG, "logout success(${response.code}, ${response.msg})")
-                    Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT)
-                        .show() //"登出成功"
+                    Log.i(TAG, "logout success(${response.code}, ${response.msg})")
                     token = null
-                    clearToken(token)
+                    saveToke(token)
                     showToken(token)
+                    Toast.makeText(applicationContext, response.msg, Toast.LENGTH_SHORT).show()
                 } else {
                     Log.e(TAG, "logout fail(${response.code}, ${response.msg})")
                     Toast.makeText(
@@ -249,7 +241,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    suspend fun logoutInBackground(token: String?): CommonReponse {
+    private suspend fun logoutInBackground(token: String?): CommonReponse {
         return withContext(Dispatchers.Default) {
             service.logout(token)
         }
@@ -257,7 +249,7 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * 检查用户输入的账号和密码
-     * TODO：实际情况下这里要做得很具体，限制字符串长度和字符组合，例如密码需要同时有大小写字母和数字等
+     * TODO：实际情况下这里要做得更加具体，限制字符串长度和字符组合，例如密码需要同时有大小写字母和数字等
      */
     private fun validNamePassword(name: String?, password: String?): Boolean {
         if (name.isNullOrEmpty() || password.isNullOrEmpty()) {
@@ -272,12 +264,11 @@ class MainActivity : AppCompatActivity() {
      */
     private fun saveToke(token: String?) {
         Log.i(TAG, "saveToken, token:${token}")
-        getPreferences(Context.MODE_PRIVATE).edit().putString("token", token).apply()
-    }
-
-    private fun clearToken(token: String?) {
-        Log.i(TAG, "clearToken, token:${token}")
-        getPreferences(Context.MODE_PRIVATE).edit().remove("token").apply()
+        if (token.isNullOrEmpty()) {
+            getPreferences(Context.MODE_PRIVATE).edit().remove("token").apply()
+        } else {
+            getPreferences(Context.MODE_PRIVATE).edit().putString("token", token).apply()
+        }
     }
 
     /**
@@ -290,11 +281,11 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun showDevice(device: String?) {
-        deviceText.text = "device: ${device}"
+        deviceText.text = "device: $device"
     }
 
     @SuppressLint("SetTextI18n")
     private fun showToken(token: String?) {
-        tokenText.text = "token: ${token}"
+        tokenText.text = "token: $token"
     }
 }
