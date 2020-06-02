@@ -128,9 +128,23 @@ cd server/helloworld-service
 docker-compose up
 ```
 
-### 3、相关工具和参考资料
+### 3、运行界面
 
-#### 3.1 开发工具
+#### 3.1 Android客户端
+
+![client](images/client.jpg)
+
+#### 3.2 运行在腾讯云服务器的后台
+
+![server](images/server.png)
+
+![mysql1](images/mysql1.png)
+
+![mysql1](images/mysql2.png)
+
+### 4、相关工具和参考资料
+
+#### 4.1 开发工具
 
 开发阶段会用到下面几个工具，原始下载链接速度很慢，换成用七牛云存放后下载(一般在云服务器中使用)
 
@@ -138,7 +152,7 @@ docker-compose up
 - bazel：http://video.pocketpoetry.club/bazel-3.1.0-installer-linux-x86_64.sh
 - grpc archive (de195d3520a803fd6424bc33f154ba265af98bbe)：http://video.pocketpoetry.club/grpc-de195d3520a803fd6424bc33f154ba265af98bbe.tar.gz
 
-#### 3.2 参考资料
+#### 4.2 参考资料
 - [Mobile C++ Tutorial, Hello World example](http://mobilecpptutorials.com/)
 - [gRPC on Android, Hello World example](https://github.com/grpc/grpc/tree/master/examples/android/helloworld)
 - [Ubuntu 18.04 install docker](https://zhuanlan.zhihu.com/p/57413820)
