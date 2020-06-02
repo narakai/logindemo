@@ -6,4 +6,4 @@ COPY . .
 
 RUN apt-get update -y && apt-get install -y default-jdk
 
-RUN ./gradlew run
+RUN ./gradlew installDist && ./build/install/helloworld-service/bin/hello-world-server

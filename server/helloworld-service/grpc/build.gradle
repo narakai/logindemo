@@ -11,6 +11,10 @@ group 'com.tencent'
 version '1.0-SNAPSHOT'
 
 repositories {
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://maven.aliyun.com/repository/google/' }
+    maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+    mavenLocal()
     mavenCentral()
 }
 
@@ -62,6 +66,20 @@ dependencies {
 }
 
 // 设置入口，执行./gradlew run就能启动server
-application {
-    mainClassName = "com.tencent.logindemo.HelloWorldServer"
+//application {
+//    mainClassName = "com.tencent.logindemo.HelloWorldServer"
+//}
+
+startScripts.enabled = false
+
+task helloWorldServer(type: CreateStartScripts) {
+    mainClassName = 'com.tencent.logindemo.HelloWorldServer'
+    applicationName = 'hello-world-server'
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = startScripts.classpath
+}
+
+applicationDistribution.into('bin') {
+    from(helloWorldServer)
+    fileMode = 0755
 }
