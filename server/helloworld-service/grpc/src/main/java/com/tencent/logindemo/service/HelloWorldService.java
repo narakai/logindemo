@@ -195,7 +195,7 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
                 responseObserver.onNext(response);
                 responseObserver.onCompleted();
             } else {
-                CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("刷新token成功").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+                CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("刷新token成功").setTokenInfo(TokenInfo.newBuilder().setToken(token).build()).build();
                 responseObserver.onNext(response);
                 responseObserver.onCompleted();
             }
