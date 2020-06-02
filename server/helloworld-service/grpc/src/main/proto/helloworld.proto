@@ -1,0 +1,51 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.tencent.logindemo.proto";
+option java_outer_classname = "HelloWorldProto";
+
+package helloworld;
+
+service Greeter {
+  
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+
+  rpc Signup (LoginRequest) returns (CommonResponse) {}
+
+  rpc Login (LoginRequest) returns (CommonResponse) {}
+
+  rpc Logout (TokenInfo) returns (CommonResponse) {}
+
+  rpc RefreshToken (RefreshTokenRequest) returns (CommonResponse) {}
+
+}
+
+message LoginRequest {
+  string name = 1;
+  string password = 2;
+  string device = 3;
+}
+
+message CommonResponse {
+  int32 code = 1;
+  string message = 2;
+  TokenInfo tokenInfo = 3;
+}
+
+message TokenInfo {
+  string token = 1;
+}
+
+message RefreshTokenRequest {
+  string device = 1;
+  string token = 2;
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}

@@ -41,9 +41,10 @@ protobuf {
 
 sourceSets {
     main {
-        proto {
+        //为了方便在docker容器中处理proto，将proto放在默认目录src/main/proto
+        /*proto {
             srcDir "../../../protos"
-        }
+        }*/
         java {
             srcDirs 'src/main/grpc'
             srcDirs 'src/main/java'
