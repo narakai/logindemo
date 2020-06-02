@@ -1,0 +1,8 @@
+deb http://mirrors.163.com/debian/ bionic main non-free contrib
+deb http://mirrors.163.com/debian/ bionic-updates main non-free contrib
+deb http://mirrors.163.com/debian/ bionic-backports main non-free contrib
+deb-src http://mirrors.163.com/debian/ bionic main non-free contrib
+deb-src http://mirrors.163.com/debian/ bionic-updates main non-free contrib
+deb-src http://mirrors.163.com/debian/ bionic-backports main non-free contrib
+deb http://mirrors.163.com/debian-security/ bionic/updates main non-free contrib
+deb-src http://mirrors.163.com/debian-security/ bionic/updates main non-free contrib
