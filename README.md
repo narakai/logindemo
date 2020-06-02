@@ -47,22 +47,22 @@ token: id, userName, token, status, device
 
 共有4个接口，分别是注册、登录、登出和刷新token的功能
 
-注册接口：用户输入账号密码，客户端将账号和加密后的密码以及设备信息传给后台，注册成功后台返回token信息    
+(1) 注册接口：用户输入账号密码，客户端将账号和加密后的密码以及设备信息传给后台，注册成功后台返回token信息    
 ```
 signup(name:string, password:string, device:string): common_reponse;
 ```
 
-登录接口：用户输入账号密码，客户端将账号和加密后的密码以及设备信息传给后台，后台验证账号密码是否都正确    
+(2) 登录接口：用户输入账号密码，客户端将账号和加密后的密码以及设备信息传给后台，后台验证账号密码是否都正确    
 ```
 login(name:string, password:string, device:string): common_reponse;
 ````
 
-登出接口：客户端将本地token传给后台，后台将这个token对应的记录的凭证状态设置为无效    
+(3) 登出接口：客户端将本地token传给后台，后台将这个token对应的记录的凭证状态设置为无效    
 ```
 logout(token:string): common_reponse;
 ```
 
-刷新token接口：应用启动的时候就会触发，如果用户在其他设备登录了或者其他原因导致token失效的话需要提示用户重新登录    
+(4) 刷新token接口：应用启动的时候就会触发，如果用户在其他设备登录了或者其他原因导致token失效的话需要提示用户重新登录    
 ```
 refreshToken(token:string, device:string): common_reponse;
 ```
@@ -132,7 +132,7 @@ docker-compose up
 
 #### 3.1 Android客户端
 
-![client](images/client.jpg)
+<img src="images/client.jpg" alt="client" style="zoom:30%;" />
 
 #### 3.2 运行在腾讯云服务器的后台
 
