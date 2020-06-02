@@ -69,11 +69,11 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
             String token = Utils.generateToken(name);
             DataBaseHelper.getInstance().addNewToken(name, device, token);
 
-            CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("注册成功").setTokenInfo(TokenInfo.newBuilder().setToken(token).build()).build();
+            CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("signup success").setTokenInfo(TokenInfo.newBuilder().setToken(token).build()).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } else {
-            CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_SIGNUP_USER_EXIST).setMessage("注册：该用户已存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+            CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_SIGNUP_USER_EXIST).setMessage("user name already exists").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
@@ -105,13 +105,13 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
 
         boolean isUserExist = DataBaseHelper.getInstance().isUserExist(name);
         if (!isUserExist) {
-            CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_LOGIN_USER_NOT_EXIST).setMessage("登录：该用户不存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+            CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_LOGIN_USER_NOT_EXIST).setMessage("user not exist").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } else {
             boolean isPasswordCorrect = DataBaseHelper.getInstance().isPasswordCorrect(name, password);
             if (!isPasswordCorrect) {
-                CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_LOGIN_NAME_PASSWORD_WRONG).setMessage("登录：账号或密码错误").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+                CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_LOGIN_NAME_PASSWORD_WRONG).setMessage("user name or password is wrong").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
                 responseObserver.onNext(response);
                 responseObserver.onCompleted();
             } else {
@@ -120,14 +120,14 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
                     String token = Utils.generateToken(name);
                     DataBaseHelper.getInstance().addNewToken(name, device, token);
 
-                    CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("登录成功").setTokenInfo(TokenInfo.newBuilder().setToken(token).build()).build();
+                    CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("login success").setTokenInfo(TokenInfo.newBuilder().setToken(token).build()).build();
                     responseObserver.onNext(response);
                     responseObserver.onCompleted();
                 } else {//TODO：这种情况下可能需要将已经在线的设备强制退出，或者其他已登录的设备需要在下次启动时refreshToken之后重新登录
                     String token = Utils.generateToken(name);
                     DataBaseHelper.getInstance().updateToken(name, device, token, 1);
 
-                    CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("登录成功").setTokenInfo(TokenInfo.newBuilder().setToken(token).build()).build();
+                    CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("login success").setTokenInfo(TokenInfo.newBuilder().setToken(token).build()).build();
                     responseObserver.onNext(response);
                     responseObserver.onCompleted();
                 }
@@ -154,13 +154,13 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
 
         boolean isTokenExist = DataBaseHelper.getInstance().isTokenExistByToken(token);
         if (!isTokenExist) {
-            CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_LOGOUT_TOKEN_NOT_EXIST).setMessage("登出：token不存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+            CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_LOGOUT_TOKEN_NOT_EXIST).setMessage("token not exist").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } else {
             DataBaseHelper.getInstance().invalidToken(token);
 
-            CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("登出成功").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+            CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("logout success").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
@@ -186,17 +186,17 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
 
         boolean isTokenExist = DataBaseHelper.getInstance().isTokenExistByToken(token);
         if (!isTokenExist) {
-            CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_REFRESH_TOKEN_NOT_EXIST).setMessage("刷新token：token不存在").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+            CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_REFRESH_TOKEN_NOT_EXIST).setMessage("token not exist").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } else {
             boolean isTokenValid = DataBaseHelper.getInstance().isTokenValid(token, device);
             if (!isTokenValid) {
-                CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_REFRESH_TOKEN_NOT_VALID).setMessage("token失效，请重新登录").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
+                CommonResponse response = CommonResponse.newBuilder().setCode(ERROR_REFRESH_TOKEN_NOT_VALID).setMessage("token invalid, please login first").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
                 responseObserver.onNext(response);
                 responseObserver.onCompleted();
             } else {
-                CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("刷新token成功").setTokenInfo(TokenInfo.newBuilder().setToken(token).build()).build();
+                CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("refresh token success").setTokenInfo(TokenInfo.newBuilder().setToken(token).build()).build();
                 responseObserver.onNext(response);
                 responseObserver.onCompleted();
             }
