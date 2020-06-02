@@ -63,7 +63,8 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
         boolean isUserExist = DataBaseHelper.getInstance().isUserExist(name);
         if (!isUserExist) {
             String salt = Utils.generateSalt();
-            DataBaseHelper.getInstance().addNewUser(name, password, salt);
+            String passwordHash = Utils.md5(password + salt);
+            DataBaseHelper.getInstance().addNewUser(name, passwordHash, salt);
 
             String token = Utils.generateToken(name);
             DataBaseHelper.getInstance().addNewToken(name, device, token);
@@ -157,7 +158,7 @@ public class HelloWorldService extends GreeterGrpc.GreeterImplBase {
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } else {
-            DataBaseHelper.getInstance().invalidToken(token);//将token记录的status设置为0即可
+            DataBaseHelper.getInstance().invalidToken(token);
 
             CommonResponse response = CommonResponse.newBuilder().setCode(0).setMessage("登出成功").setTokenInfo(TokenInfo.newBuilder().setToken("").build()).build();
             responseObserver.onNext(response);

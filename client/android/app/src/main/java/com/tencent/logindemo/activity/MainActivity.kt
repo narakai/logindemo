@@ -17,7 +17,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.math.BigInteger
+import java.security.MessageDigest
 
+/**
+ * 客户端主界面，包含注册、登录、登出等操作，同时显示device和token信息在界面上
+ */
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -123,10 +128,11 @@ class MainActivity : AppCompatActivity() {
             val name = nameText.text.toString()
             val password = passwordText.text.toString()
             if (validNamePassword(name, password)) {
-                Log.i(TAG, "signup, name:${name}, password:${password}, device:${device}")
+                val passwordHash = password.md5()
+                Log.i(TAG, "signup, name:${name}, password:${passwordHash}, device:${device}")
 
                 lifecycleScope.launch(Dispatchers.Main) {
-                    val response = signupInBackground(name, password, device)
+                    val response = signupInBackground(name, passwordHash, device)
                     Log.i(TAG, "signup, response:${response}")
                     if (response.code == 0) {
                         Log.i(TAG, "signup success(${response.code}, ${response.msg})")
@@ -174,10 +180,11 @@ class MainActivity : AppCompatActivity() {
             val name = nameText.text.toString()
             val password = passwordText.text.toString()
             if (validNamePassword(name, password)) {
-                Log.i(TAG, "login, name:${name}, password:${password}, device:${device}")
+                val passwordHash = password.md5()
+                Log.i(TAG, "login, name:${name}, password:${passwordHash}, device:${device}")
 
                 lifecycleScope.launch(Dispatchers.Main) {
-                    val response = loginInBackground(name, password, device)
+                    val response = loginInBackground(name, passwordHash, device)
                     Log.i(TAG, "login, response:${response}")
                     if (response.code == 0) {
                         Log.i(TAG, "login success(${response.code}, ${response.msg})")
@@ -288,4 +295,12 @@ class MainActivity : AppCompatActivity() {
     private fun showToken(token: String?) {
         tokenText.text = "token: $token"
     }
+}
+
+/**
+ * 生成长度为32位的md5字符串
+ */
+fun String.md5(): String {
+    val md = MessageDigest.getInstance("MD5")
+    return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
 }

@@ -1,6 +1,7 @@
 package com.tencent.logindemo.database;
 
 import com.tencent.logindemo.HelloWorldServer;
+import com.tencent.logindemo.util.Utils;
 
 import java.sql.*;
 import java.util.Random;
@@ -11,6 +12,7 @@ import java.util.logging.Logger;
  * 数据库操作类
  * <p>
  * TODO: 1、数据库中有两个表user和token表，暂时没有考虑建立索引来提高查询效率
+ * TODO：2、考虑下某些场景下潜在的SQL注入风险
  */
 public class DataBaseHelper {
 
@@ -106,6 +108,7 @@ public class DataBaseHelper {
     }
 
     /**
+     * 检查用户的账号密码是否正确
      * TODO：暂不考虑这里多次SQL操作存在可以合并的优化手段
      */
     public boolean isPasswordCorrect(String name, String password) {
@@ -114,8 +117,10 @@ public class DataBaseHelper {
             logger.info("isPasswordCorrect executeSql: " + sql);
             ResultSet rs = statement.executeQuery(sql);
             if (rs.next()) {
-                String salt = rs.getString("salt");//TODO: 利用salt对password进行加密并进行对比
-                String sql2 = "SELECT name FROM user WHERE name='" + name + "' and password='" + password + "'";
+                String salt = rs.getString("salt");
+                String passwordHash = Utils.md5(password + salt);
+
+                String sql2 = "SELECT name FROM user WHERE name='" + name + "' and password='" + passwordHash + "'";
                 logger.info("isPasswordCorrect executeSql: " + sql);
                 ResultSet rs2 = statement.executeQuery(sql2);
                 boolean result = rs2.next();
