@@ -1,6 +1,6 @@
 package com.tencent.logindemo.util;
 
-import javax.xml.bind.DatatypeConverter;
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
@@ -39,7 +39,13 @@ public class Utils {
     public static String md5(String str) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            return DatatypeConverter.printHexBinary(md.digest(str.getBytes()));
+            byte[] messageDigest = md.digest(str.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
