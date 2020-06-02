@@ -94,3 +94,4 @@ lint/tmp/
 /server/account-service/gRPC/bazel-out
 /server/account-service/gRPC/bazel-gRPC
 /server/account-service/gRPC/bazel-bin
+.vscode
