@@ -19,10 +19,11 @@ public class DataBaseHelper {
     private static final Logger logger = Logger.getLogger(HelloWorldServer.class.getName());
 
     private static final int PORT = 3306;
+    private static final String SERVER = "111.229.210.33";
     private static final String USER = "root";
     private static final String PASS = "root";
     private static final String DATABASE = "logindemo";
-    private static final String DB_URL = String.format("jdbc:mysql://localhost:%s/%s?useUnicode=true&characterEncoding=UTF-8", PORT, DATABASE);
+    private static final String DB_URL = String.format("jdbc:mysql://%s:%s/%s?useUnicode=true&characterEncoding=UTF-8", SERVER, PORT, DATABASE);
 
     private Connection connection = null;
     private Statement statement = null;
