@@ -132,7 +132,7 @@ docker-compose up
 
 #### 3.1 Android客户端
 
-<img src="images/client.jpg" alt="client" style="zoom:30%;" />
+<img src="images/client.jpg" alt="client" width="320" />
 
 #### 3.2 运行在腾讯云服务器的后台
 
