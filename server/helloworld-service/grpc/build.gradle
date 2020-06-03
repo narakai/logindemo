@@ -79,6 +79,7 @@ task helloWorldServer(type: CreateStartScripts) {
     classpath = startScripts.classpath
 }
 
+//触发 ./gradlew installDist && ./build/install/helloworld-service/bin/hello-world-server 即可启动server
 applicationDistribution.into('bin') {
     from(helloWorldServer)
     fileMode = 0755
