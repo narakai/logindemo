@@ -47,6 +47,11 @@ token: id, userName, token, status, device
 
 共有4个接口，分别是注册、登录、登出和刷新token的功能
 
+定义的djinni文件：[logindemo.djinni](djinni/logindemo.djinni)     
+定义的proto文件：[helloworld.proto](protos/helloworld.proto)     
+客户端核心代码：[MainActivity.kt](client/android/app/src/main/java/com/tencent/logindemo/activity/MainActivity.kt)     
+后台核心代码：[HelloWorldService.java](server/helloworld-service/grpc/src/main/java/com/tencent/logindemo/service/HelloWorldService.java)
+
 (1) 注册接口：用户输入账号密码，客户端将账号和加密后的密码以及设备信息传给后台，注册成功后台返回token信息    
 ```
 signup(name:string, password:string, device:string): common_reponse;
@@ -101,6 +106,9 @@ make
 #### 2.3 自动代码生成
 
 利用前面编译djinni和grpc源码后得到的命令行工具去自动生成相关代码 (主要是给客户端用)
+
+[run_djinni.sh](djinni/run_djinni.sh)     
+[run_proto.sh](protos/run_proto.sh)     
 
 ```
 cd djinni
